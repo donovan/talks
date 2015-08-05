@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Introduction to Docker - Catalyst Training</title>
+
+        <meta name="author" content="Catalyst">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/catalyst.css" id="theme">
+        <link rel="stylesheet" href="css/font-awesome.css">
+
+        <!-- For syntax highlighting -->
+        <!-- <link rel="stylesheet" href="lib/css/zenburn.css"> -->
+        <link rel="stylesheet" href="lib/css/catalyst-syntax.css">
+
+        <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+        <script>
+            if( window.location.search.match( /print-pdf/gi ) ) {
+                var link = document.createElement( 'link' );
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+                document.getElementsByTagName( 'head' )[0].appendChild( link );
+            }
+        </script>
+
+        <style>
+            /* Add the ability to omit slides from the printed version (has to be after the print include)*/
+            @media print {
+                .reveal .slides section.no-print {
+                    display: none !important;
+                    visibility: hidden !important;
+                }
+            }
+        </style>
+        <style>
+            .reveal h1, .reveal h2, .reveal h3 {
+                color: #ba2025;
+            }
+        </style>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <!-- Please put any custom styles here -->
+        <style>
+
+        </style>
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <!-- Cover slide -->
+                <section>
+                    <h1 class="catalyst-logo">Catalyst</h1>
+                    <h3>Snowflakes in the Cloud</h3>
+                    <p class="small-text">
+                        Presented by <a href="#">Donovan Jones</a>
+                    </p>
+                </section>
+
+                <section>
+                    <h3>What is this talk about?</h3>
+                    <p>We are going to look at how to avoid migrating snowflakes into the cloud, move on to how docker helps us build immutable architecture and what that helps us do. Then we will explore the vague outlines of a "data center operating system" and what we might expect when we end up running one.</p>
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>Snowflakes</h2>
+                    <img src="img/docker-ecosystem.png" alt="Snowflakes" height="600" width="800">
+                </section>
+
+                <section>
+                    <h3>Snowflakes</h3>
+                    <ul>
+                        <li>Carefully tended delicate snowflakes</li>
+                        <li>Manual configuration</li>
+                        <li>Prone to configuration drift</li>
+                        <li>Rebuilding is hard!</li>
+                    </ul>
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>Cattle vs Pets</h2>
+                    <img src="img/docker-ecosystem.png" alt="Snowflakes" height="600" width="800">
+                </section>
+
+                <section>
+                    <h3>Cattle vs Pets</h3>
+                    <ul>
+                        <li>Pets are given names like pussinboots</li>
+                        <li>Cattle are given names like web05</li>
+                        <li>Pets are unique, lovingly hand raised and cared for</li>
+                        <li>Cattle are identical to other cattle</li>
+                        <li>When pets are ill we nurse them back to health</li>
+                        <li>When cattle are ill we replace them</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>So whats the solution?</h3>
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>Cattle vs Pets</h2>
+                    <img src="img/docker-ecosystem.png" alt="Snowflakes" height="600" width="800">
+                </section>
+
+                <section>
+                    <h3>Puppet!</h3>
+                    <ul>
+                        <li>All the things</li>
+                        <li>And friends</li>
+                        <li>Try to impose a consistent state onto a machine</li>
+                        <li>Ideally declarative</li>
+                    </ul>
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>Cattle vs Pets</h2>
+                    <img src="img/docker-ecosystem.png" alt="Snowflakes" height="600" width="800">
+                </section>
+
+                <section>
+                    <h3>We promise to try hard!</h3>
+                    <ul>
+                        <li>20 people have ssh access</li>
+                        <li>People have to fix things in the middle of the night or under pressure</li>
+                        <li>Whenever anyone does anything they have to remember to puppet it</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Moving legacy workloads to the cloud is hard work!</h3>
+                    <ul>
+                        <li>Break you monolithic 15 year old app into microservices...</li>
+                        <li>You should be thinking about CAP for your data store</li>
+                        <li>Cloud = Save money</li>
+                        <li>Cloud != rewriting the application as a microservice</li>
+                    </ul>
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>CAP</h2>
+                    <img src="img/docker-ecosystem.png" alt="CAP" height="600" width="800">
+                </section>
+
+                <section>
+                    <h3>Immutable architecture</h3>
+                    <ul>
+                        <li>This is what puppet et. al. is trying to give us</li>
+                        <li>Chaos monkey</li>
+                        <li>Phoenix servers</li>
+                        <li>The environment is defined in code</li>
+                        <li>If you need to change _anything_ you create a new instance and destroy the old one</li>
+                        <li>What we need is a system that forces us to work in this way rather than make it optional</li>
+                    </ul>
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>CAP</h2>
+                    <img src="img/docker-ecosystem.png" alt="CAP" height="600" width="800">
+                </section>
+
+                <section>
+                    <h3>Enter docker</h3>
+                    <ul>
+                        <li>Process level container vs machine level container</li>
+                        <li>Well defined responsibilities</li>
+                        <li>Flattens dev/staging/prod/dr differences</li>
+                        <li>Portability</li>
+                        <li>Process encapsulation</li>
+                        <li>Speed (cf. traditional virtualisation)</li>
+                        <li>Efficient resource usage (shared Kernel, no heavy hypervisors)</li>
+                    </ul>
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>CAP</h2>
+                    <img src="img/docker-ecosystem.png" alt="CAP" height="600" width="800">
+                </section>
+
+                <section>
+                    <h3>The rise of docker</h3>
+                    <ul>
+                        <li>Came from nowhere</li>
+                        <li>Hype!?</li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>CAP</h2>
+                    <img src="img/docker-ecosystem.png" alt="CAP" height="600" width="800">
+                </section>
+
+                <section>
+                    <h3>What docker helps us do</h3>
+                    <ul>
+                        <li>Strongly favours building immutable systems (no ssh)</li>
+                        <li>This helps us do a number of other things better</li>
+                    </ul>
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>CAP</h2>
+                    <img src="img/docker-ecosystem.png" alt="CAP" height="600" width="800">
+                </section>
+
+                <section>
+                    <h3>Microservices</h3>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>CAP</h2>
+                    <img src="img/docker-ecosystem.png" alt="CAP" height="600" width="800">
+                </section>
+
+                <section>
+                    <h3>Devops</h3>
+                    <ul>
+                        <li>You build it you run it</li>
+                        <li>Its very clear who "owns" the service and who "owns" the platform the service runs on</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Continious delivery</h3>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>CAP</h2>
+                    <img src="img/docker-ecosystem.png" alt="CAP" height="600" width="800">
+                </section>
+
+                <section>
+                    <h3>The docker ecosystem</h3>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>Docker ecosystem</h2>
+                    <img src="img/docker-ecosystem.png" alt="Docker Ecosystem" height="600" width="800">
+                </section>
+
+                <section>
+                    <h3>The standards</h3>
+                    <ul>
+                        <li>Open Container Initiative</li>
+                        <li>Cloud Native Computing Foundation</li>
+                        <li>Both Linux Foundation Projects</li>
+                        <li>OCI is Docker lead CNCF is Google/CoreOS lead</li>
+                        <li>OCI is focused on containers CNCF is focused above containers (orchestration, discovery etc.)</li>
+                        <li>Also Oracle, Microsoft, VMWare, Red Hat etc. etc.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>The stakes</h3>
+                    <ul>
+                        <li>Are high!</li>
+                        <li>Everyone is looking at how to integrate docker into their platforms and roadmaps</li>
+                        <li>Clearly the expectation is that platforms that are good at running docker will be successful</li>
+                        <li>Jockeying for position</li>
+                        <li>Who gets to define how a major new area of computing is going to work</li>
+                        <li>Picking winners and losers is hard</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>The most important contenders</h3>
+                    <ul>
+                        <li>Docker</li>
+                        <li>Kubernetes (google)</li>
+                        <li>CoreOS</li>
+                        <li>A lot of other systems (eg Apache Mesos)</li>
+                        <li>Openstack Magnum</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>What are they building?</h3>
+                </section>
+
+                <section>
+                    <h3>The data center (cloud) operating system</h3>
+                    <p>Like a normal operating system its about scheduling processes that need to run on a shared resource. You don't have one of your cores dedicated to running firefox on a normal OS. Likewise in a cloud OS</p>
+                </section>
+
+                <section>
+                    <h3>What it needs</h3>
+                    <ul>
+                        <li>A catchy name</li>
+                        <li>Namespaces and cgroups for the data center</li>
+                        <li>Scheduling, service discovery etc.</li>
+                        <li>Can you securely run multiple tenants on the same generic infrastructure?</li>
+                        <li>If its not multi tenant then its a smaller win ... idle resources</li>
+                        <li>Lots of other stuff eg properly signed images!</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>What will it look like?</h3>
+                    <ul>
+                        <li>Complexity++</li>
+                        <li>Easier for large entities (cf. google)</li>
+                        <li>Harder to keep track of whats running where, perhaps not?</li>
+                        <li>Pets vs. Cattle vs. Bacteria??</li>
+                        <li>Will microkernels work for the data center OS?</li>
+                        <li>Many containers</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>How will it change what we do?</h3>
+                    <ul>
+                        <li>More ops in dev teams</li>
+                        <li>Infrastructure ops running generic platform (cf. openstack).</li>
+                        <li>Smaller teams focusing on services</li>
+                        <li>Building apps by plugging in services</li>
+                        <li>Move to NoSQL and other distributed friendly data stores</li>
+                        <li>Services shared between clients?</li>
+                        <li>Easier to upgrade to newer technologies and languages</li>
+                        <li>Services designed to function on generic resources (no more snowflake hardware)</li>
+                        <li>Efficient scale out (by service not machine)</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Whats the opportunity?</h3>
+                    <ul>
+                        <li>Do we want devops, continuous delivery etc?</li>
+                        <li>Do we want to be on the right side of history (Jim Zemlin)?</li>
+                        <li>We have seen things like this before, The Internet, Linux, catch the wave</li>
+                        <li>Competitive advantage</li>
+                    </ul>
+                </section>
+
+                <!-- Section title slide with big colour dot -->
+                <section class="title-slide">
+                    <h2 class="orange">Title goes here</h2>
+                </section>
+
+                <!-- Slide with a large title -->
+                <section>
+                    <h2>Large title</h2>
+                    <aside class="notes">
+                        This will only display in the notes window.
+                    </aside>
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>Title</h2>
+                    <img src="img/800x400.gif" alt="">
+                </section>
+
+                <!-- Slide with list items (list items are displayed at once) -->
+                <section>
+                    <h3>List title</h3>
+                    <ul>
+                        <li>List item 1</li>
+                        <li><i class="fa fa-camera-retro"></i>List item 2<img class="img-right" src="img/300x400.gif" alt="Placeholder image"></li>
+                        <li class="fa fa-camera-retro">List item 3<img class="img-right" src="img/300x400.gif" alt="Placeholder image"></li>
+                        <li>List item</li>
+                    </ul>
+                </section>
+
+                <!-- Slide with list items (fragmented list items) -->
+                <section>
+                    <h3>Fragmented list</h3>
+                    <ul>
+                        <li class="fragment">List item</li>
+                        <li class="fragment">List item</li>
+                        <li class="fragment">List item <img class="img-centered" src="img/500x200.gif" alt="Placeholder image"></li>
+                    </ul>
+                </section>
+
+                <!-- Slide with vertical slides underneath  -->
+                <section>
+                    <!-- Horizontal slide (This is one the same level as slide above) -->
+                    <section class="title-slide banner-3">
+                        <h2 class="yellow">Title (press down to see vertical slides)</h2>
+                    </section>
+
+                    <!-- The following slides are vertical, use down arrow key to navigate -->
+                    <!-- Centered paragraph  -->
+                    <section>
+                        <h3>Paragraph</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at scelerisque eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam placerat posuere nibh vel dapibus.</p>
+                    </section>
+
+                    <!-- Blockquote  -->
+                    <section>
+                        <h3>Blockquote</h3>
+                        <blockquote class="quotation-marks">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at scelerisque eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam placerat posuere nibh vel dapibus.
+                        </blockquote>
+                    </section>
+
+                    <!-- Nested lists-->
+                    <section>
+                        <h3>Nested lists</h3>
+                            <ul>
+                                <li>One</li>
+                                <li>Two</li>
+                                <li>Three</li>
+                                    <ul>
+                                        <li>Nested One</li>
+                                        <li>Nested Two</li>
+                                    </ul>
+                            </ul>
+                    </section>
+                </section>
+
+                <!-- Slide with code block -->
+                <section>
+                    <h3>Title</h3>
+                    <p>Some text</p>
+                    <pre><code data-trim contenteditable>
+function linkify( selector ) {
+    if( supports3DTransforms ) {
+
+        var nodes = document.querySelectorAll( selector );
+
+        for( var i = 0, len = nodes.length; i < len; i++ ) {
+            var node = nodes[i];
+
+            if( !node.className ) {
+                node.className += ' roll';
+            }
+        }
+    }
+}
+                    </code></pre>
+                </section>
+
+                <!-- Slide with full background image -->
+                <section data-background="img/800x600.gif">
+                    <h3>Image backgrounds</h3>
+                </section>
+
+                <!-- Slide with Catalyst slogan -->
+                <section class="image-slide">
+                    <img class="cat-slogan-image" src="css/theme/images/freedom-to-innovate.svg" alt="freedom to innovate">
+                </section>
+            </div>
+
+            <div class="footer">
+                <div class="scarf">
+                    <div class="scarf-orange"></div>
+                    <div class="scarf-yellow"></div>
+                    <div class="scarf-blue"></div>
+                    <div class="scarf-green"></div>
+                </div>
+                <div class="footer-inner">
+                    <div>
+                        <!-- NOTE: use only one of these. open-source-technologists is the standard -->
+                        <p class="open-source-technologists">open source technologists</p>
+                        <!-- <p class="freedom-to-innovate">freedom to innovate</p> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Parallax scrolling
+                // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+                // parallaxBackgroundSize: '2100px 900px',
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
