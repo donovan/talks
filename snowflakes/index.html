@@ -80,7 +80,7 @@
                 <!-- Large image slide -->
                 <section class="image-slide">
                     <h2>Snowflakes</h2>
-                    <img src="img/docker-ecosystem.png" alt="Snowflakes" height="600" width="800">
+                    <img src="img/snowflakes.jpg" alt="Snowflakes" height="600" width="800">
                 </section>
 
                 <section>
@@ -96,7 +96,7 @@
                 <!-- Large image slide -->
                 <section class="image-slide">
                     <h2>Cattle vs Pets</h2>
-                    <img src="img/docker-ecosystem.png" alt="Snowflakes" height="600" width="800">
+                    <img src="img/servers_pets_or_cattle.jpg" alt="Cattle vs Pets" height="600" width="800">
                 </section>
 
                 <section>
@@ -117,8 +117,8 @@
 
                 <!-- Large image slide -->
                 <section class="image-slide">
-                    <h2>Cattle vs Pets</h2>
-                    <img src="img/docker-ecosystem.png" alt="Snowflakes" height="600" width="800">
+                    <h2>Puppet!</h2>
+                    <img src="img/puppet.jpg" alt="Puppet" height="600" width="800">
                 </section>
 
                 <section>
@@ -129,12 +129,6 @@
                         <li>Try to impose a consistent state onto a machine</li>
                         <li>Ideally declarative</li>
                     </ul>
-                </section>
-
-                <!-- Large image slide -->
-                <section class="image-slide">
-                    <h2>Cattle vs Pets</h2>
-                    <img src="img/docker-ecosystem.png" alt="Snowflakes" height="600" width="800">
                 </section>
 
                 <section>
@@ -156,12 +150,6 @@
                     </ul>
                 </section>
 
-                <!-- Large image slide -->
-                <section class="image-slide">
-                    <h2>CAP</h2>
-                    <img src="img/docker-ecosystem.png" alt="CAP" height="600" width="800">
-                </section>
-
                 <section>
                     <h3>Immutable architecture</h3>
                     <ul>
@@ -176,8 +164,8 @@
 
                 <!-- Large image slide -->
                 <section class="image-slide">
-                    <h2>CAP</h2>
-                    <img src="img/docker-ecosystem.png" alt="CAP" height="600" width="800">
+                    <h2>Immutable Architecture</h2>
+                    <img src="http://s.radar.oreilly.com/wp-files/2/2015/06/immutable_infrastructure.gif" alt="Immutable Architecture" height="600" width="800">
                 </section>
 
                 <section>
@@ -195,8 +183,8 @@
 
                 <!-- Large image slide -->
                 <section class="image-slide">
-                    <h2>CAP</h2>
-                    <img src="img/docker-ecosystem.png" alt="CAP" height="600" width="800">
+                    <h2>Docker</h2>
+                    <img src="https://cldup.com/4P9pfv_Txb.png" alt="Docker">
                 </section>
 
                 <section>
@@ -204,15 +192,16 @@
                     <ul>
                         <li>Came from nowhere</li>
                         <li>Hype!?</li>
-                        <li></li>
-                        <li></li>
+                        <li>Pulled all the bits together</li>
+                        <li>The bits have been coming together over the last 10 years</li>
+                        <li>namespaces, cgroups, LXC etc.</li>
                     </ul>
                 </section>
 
                 <!-- Large image slide -->
                 <section class="image-slide">
-                    <h2>CAP</h2>
-                    <img src="img/docker-ecosystem.png" alt="CAP" height="600" width="800">
+                    <h2>Rise of Docker</h2>
+                    <img src="img/rise-of-docker.jpg" alt="Rise of Docker" height="600" width="800">
                 </section>
 
                 <section>
@@ -223,59 +212,63 @@
                     </ul>
                 </section>
 
-                <!-- Large image slide -->
-                <section class="image-slide">
-                    <h2>CAP</h2>
-                    <img src="img/docker-ecosystem.png" alt="CAP" height="600" width="800">
+                <section>
+                    <h3>Microservices</h3>
+                    <p>Cockcrofts definition: Loosely coupled service oriented architecture with bounded contexts</p>
                 </section>
 
                 <section>
                     <h3>Microservices</h3>
                     <ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
+                        <li>A suite of small services, each running in its own process and communicating with lightweight mechanisms</li>
+                        <li>Services can be implemented with entirely different stacks</li>
+                        <li>Services can be developed, maintained, and updated independently</li>
+                        <li> use well defined APIs to communicate</li>
+                        <li>If a message bus is used then its likely to be lightweight (ZeroMQ vs ESB)</li>
+                        <li>Smart endpoints and dumb pipes</li>
                     </ul>
                 </section>
 
                 <!-- Large image slide -->
                 <section class="image-slide">
-                    <h2>CAP</h2>
-                    <img src="img/docker-ecosystem.png" alt="CAP" height="600" width="800">
+                    <h2>Netflix Microservices</h2>
+                    <img src="img/netflix-microservices.jpg" alt="Netflix Microservices" height="600" width="800">
                 </section>
 
                 <section>
                     <h3>Devops</h3>
                     <ul>
                         <li>You build it you run it</li>
-                        <li>Its very clear who "owns" the service and who "owns" the platform the service runs on</li>
+                        <li>With docker its very clear who "owns" the service and who "owns" the platform the service runs on</li>
+                        <li>Because dev is like production the developer thinks about how it runs in production</li>
                     </ul>
                 </section>
 
                 <section>
-                    <h3>Continious delivery</h3>
+                    <h3>Continuous delivery</h3>
                     <ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
+                        <li>Automated Pipeline from developer commit to production deploy</li>
+                        <li>Requires Continuous Integration where every commit triggers all the tests</li>
+                        <li>Requires lots of tests</li>
                     </ul>
                 </section>
 
-                <!-- Large image slide -->
-                <section class="image-slide">
-                    <h2>CAP</h2>
-                    <img src="img/docker-ecosystem.png" alt="CAP" height="600" width="800">
+                <section>
+                    <h3>Continuous delivery antiatterns</h3>
+                    <ul>
+                        <li>Deploying software manually</li>
+                        <li>Deploying to a production-like environment only after development is complete</li>
+                        <li>Manual configuration of production environments</li>
+                        <li>Docker makes it difficult to do any of these</li>
+                    </ul>
                 </section>
 
                 <section>
                     <h3>The docker ecosystem</h3>
                     <ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
+                        <li>A proliferation of tools</li>
+                        <li>The shipping analogy</li>
+                        <li>Cranes, trains, container ships, forklifts</li>
                     </ul>
                 </section>
 
@@ -321,12 +314,13 @@
                 </section>
 
                 <section>
-                    <h3>What are they building?</h3>
+                    <h3>What is being built?</h3>
                 </section>
 
                 <section>
                     <h3>The data center (cloud) operating system</h3>
-                    <p>Like a normal operating system its about scheduling processes that need to run on a shared resource. You don't have one of your cores dedicated to running firefox on a normal OS. Likewise in a cloud OS</p>
+                    <p>Like a normal operating system its about scheduling processes that need to run on a shared resource.</p>
+                    <p>You don't have one of your cores dedicated to running firefox on a normal OS. Likewise in a cloud OS.</p>
                 </section>
 
                 <section>
@@ -338,6 +332,17 @@
                         <li>Can you securely run multiple tenants on the same generic infrastructure?</li>
                         <li>If its not multi tenant then its a smaller win ... idle resources</li>
                         <li>Lots of other stuff eg properly signed images!</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Openstack</h3>
+                    <ul>
+                        <li>Future is here its just not evenly distributed..</li>
+                        <li>We will be running containers _and_ legacy applications for a long time</li>
+                        <li>Hybrid</li>
+                        <li>A management plane for bare metal, virtualised compute and containers</li>
+                        <li>Magnum needs to grow up fast</li>
                     </ul>
                 </section>
 
@@ -371,10 +376,10 @@
                 <section>
                     <h3>Whats the opportunity?</h3>
                     <ul>
+                        <li>Competitive advantage</li>
                         <li>Do we want devops, continuous delivery etc?</li>
                         <li>Do we want to be on the right side of history (Jim Zemlin)?</li>
                         <li>We have seen things like this before, The Internet, Linux, catch the wave</li>
-                        <li>Competitive advantage</li>
                     </ul>
                 </section>
 
