@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
 
-        <title>Introduction to Docker - Catalyst Training</title>
+        <title>Snowflakes in the cloud</title>
 
         <meta name="author" content="Catalyst">
 
@@ -153,7 +153,7 @@
                 <!-- Large image slide -->
                 <section class="image-slide">
                     <h2>CAP</h2>
-                    <img src="http://digbigdata.com/wp-content/uploads/2013/05/media_httpfarm5static_mevIk.png" alt="CAP" height="600" width="800">
+                    <img src="img/cap.png" alt="CAP" height="600" width="800">
                 </section>
 
                 <section>
@@ -171,7 +171,7 @@
                 <!-- Large image slide -->
                 <section class="image-slide">
                     <h2>Immutable Architecture</h2>
-                    <img src="http://s.radar.oreilly.com/wp-files/2/2015/06/immutable_infrastructure.gif" alt="Immutable Architecture" height="600" width="800">
+                    <img src="img/immutable_infrastructure.gif" alt="Immutable Architecture" height="600" width="800">
                 </section>
 
                 <section>
@@ -190,7 +190,7 @@
                 <!-- Large image slide -->
                 <section class="image-slide">
                     <h2>Docker</h2>
-                    <img src="https://cldup.com/4P9pfv_Txb.png" alt="Docker">
+                    <img src="img/docker.png" alt="Docker">
                 </section>
 
                 <section>
@@ -270,6 +270,16 @@
                 </section>
 
                 <section>
+                    <h3>Declarative vs Procedural</h3>
+                    <ul>
+                        <li>Workflow results in immutable infrastructure</li>
+                        <li>Not immutable by design</li>
+                        <li>Dockerfiles are Procedural not Declarative</li>
+                        <li>cf. Puppet manifests</li>
+                    </ul>
+                </section>
+
+                <section>
                     <h3>The docker ecosystem</h3>
                     <ul>
                         <li>A proliferation of tools</li>
@@ -296,6 +306,12 @@
                     </ul>
                 </section>
 
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>The stakes</h2>
+                    <img src="img/stakes.jpg" alt="Stakes">
+                </section>
+
                 <section>
                     <h3>The stakes</h3>
                     <ul>
@@ -309,18 +325,23 @@
                 </section>
 
                 <section>
-                    <h3>The most important contenders</h3>
+                    <h3>Some important contenders</h3>
                     <ul>
                         <li>Docker</li>
                         <li>Kubernetes (google)</li>
                         <li>CoreOS</li>
-                        <li>A lot of other systems (eg Apache Mesos)</li>
-                        <li>Openstack Magnum</li>
+                        <li>A lot of other systems (eg Apache Mesos, Openstack Magnum)</li>
                     </ul>
                 </section>
 
                 <section>
                     <h3>What is being built?</h3>
+                    <ul>
+                        <li>A DCOS?</li>
+                        <li>A Stack?</li>
+                    </ul>
+                </section>
+
                 </section>
 
                 <section>
@@ -329,8 +350,179 @@
                     <p>You don't have one of your cores dedicated to running firefox on a normal OS. Likewise in a cloud OS.</p>
                 </section>
 
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>The stack</h2>
+                    <img src="img/stack.jpg" alt="Stack">
+                </section>
+
                 <section>
-                    <h3>What it needs</h3>
+                    <h3>The stack</h3>
+                    <ul>
+                        <li>The LAMP stack equivalent</li>
+                        <li>Linux - Docker - Kubernetes - O?</li>
+                        <li>Still in the process of forming</li>
+                        <li>Also etcd</li>
+                        <li>Building up from docker</li>
+                        <li>Building down from existing projects (Openstack, Mesos)</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Kubernetes</h3>
+                    <ul>
+                        <li>Shaping up as a key component of the stack</li>
+                        <li>Spawn of the borg</li>
+                    </ul>
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>Borg</h2>
+                    <img src="img/borg.jpg" alt="Borg">
+                </section>
+
+                <section>
+                    <h3>Borg</h3>
+                    <ul>
+                        <li>Future is here its just not evenly distributed..</li>
+                        <li>2 Billion containers/week</li>
+                        <li>Why is google open sourcing Kurbenetes?</li>
+                    </ul>
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>The stacks</h2>
+                    <img src="img/stacks.jpg" alt="Stacks">
+                </section>
+
+                <section>
+                    <h3>The stacks</h3>
+                    <ul>
+                        <li>Lets review some of the stacks that are out there</li>
+                        <li>How should we think of these?</li>
+                        <li>Like distributions?</li>
+                        <li>Probably expect consolidation</li>
+                        <li>Like LAMP each component is useful on its own</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Docker tools</h3>
+                    <ul>
+                        <li>Docker engine</li>
+                        <li>Docker compose</li>
+                        <li>Docker swarm</li>
+                        <li>Bottom up approach</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>CoreOS</h3>
+                    <ul>
+                        <li>Techtonic</li>
+                        <li>CoreOS (Linux)</li>
+                        <li>Docker / rkt</li>
+                        <li>Kubernetes</li>
+                        <li>Dashboard</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>The Red Hat stack</h3>
+                    <ul>
+                        <li>LDKO</li>
+                        <li>Atomic</li>
+                        <li>Docker</li>
+                        <li>Kubernetes</li>
+                        <li>Openshift (v3)</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Rancher</h3>
+                    <ul>
+                        <li>RancherOS</li>
+                        <li>Docker</li>
+                        <li>??</li>
+                        <li>Nice dashboard</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Openstack</h3>
+                    <ul>
+                        <li>We will be running containers _and_ legacy applications for a long time</li>
+                        <li>Hybrid</li>
+                        <li>A management plane for bare metal, virtualised compute and containers</li>
+                        <li>Magnum - LDK(Horizon)</li>
+                        <li>Docker nova driver</li>
+                        <li>Roll your own on compute</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Apache Mesos</h3>
+                    <ul>
+                        <li>Mesosphere/Marathon/Chronos</li>
+                        <li>Works well with other Apache big data projects</li>
+                        <li>DCOS</li>
+                        <li>Unified management of physical, virtual or cloud</li>
+                        <li>Supports Docker and Kubernetes</li>
+                        <li>Partnership with Azure</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>VMWare</h3>
+                    <ul>
+                        <li>Docker with the VMware ESX hypervisor</li>
+                        <li>VMware vSphere Integrated Containers (VIC)</li>
+                        <li>Pivotal Cloud Foundary</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Ubuntu</h3>
+                    <ul>
+                        <li>Most popular OS on public and private clouds</li>
+                        <li>LXD/LXC</li>
+                        <li>Snappy</li>
+                        <li>Juju</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Microsoft</h3>
+                    <ul>
+                        <li>See other talk ...</li>
+                        <li>Porting docker</li>
+                        <li>Linux first class citizen on Azure</li>
+                        <li>Mesosphere partnerships</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Public clouds</h3>
+                    <ul>
+                        <li>AWS - EC2 Container Service</li>
+                        <li>Google Cloud Platform - GCE - Kubernetes under the hood</li>
+                        <li>Azure - See other talk ...</li>
+                        <li>Openstack based public clouds</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>The Others</h3>
+                    <ul>
+                        <li>Oracle ... Solaris zones since ages ago</li>
+                        <li>Cloud Foundary (Deis PaaS - CoreOS/Docker/etcd/nginx)</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>What we need</h3>
                     <ul>
                         <li>A catchy name</li>
                         <li>Namespaces and cgroups for the data center</li>
@@ -338,17 +530,7 @@
                         <li>Can you securely run multiple tenants on the same generic infrastructure?</li>
                         <li>If its not multi tenant then its a smaller win ... idle resources</li>
                         <li>Lots of other stuff eg properly signed images!</li>
-                    </ul>
-                </section>
-
-                <section>
-                    <h3>Openstack</h3>
-                    <ul>
-                        <li>Future is here its just not evenly distributed..</li>
-                        <li>We will be running containers _and_ legacy applications for a long time</li>
-                        <li>Hybrid</li>
-                        <li>A management plane for bare metal, virtualised compute and containers</li>
-                        <li>Magnum needs to grow up fast</li>
+                        <li>Declaritive configuration?</li>
                     </ul>
                 </section>
 
@@ -372,10 +554,19 @@
                         <li>Smaller teams focusing on services</li>
                         <li>Building apps by plugging in services</li>
                         <li>Move to NoSQL and other distributed friendly data stores</li>
+                        <li>Will the distribution survive</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>How will it change what we do?</h3>
+                    <ul>
                         <li>Services shared between clients?</li>
                         <li>Easier to upgrade to newer technologies and languages</li>
                         <li>Services designed to function on generic resources (no more snowflake hardware)</li>
                         <li>Efficient scale out (by service not machine)</li>
+                        <li>Better resource utilisation</li>
+                        <li>We all become public cloud consumers?</li>
                     </ul>
                 </section>
 
@@ -388,134 +579,6 @@
                         <li>We have seen things like this before, The Internet, Linux, catch the wave</li>
                     </ul>
                 </section>
-
-                <!-- Section title slide with big colour dot -->
-                <section class="title-slide">
-                    <h2 class="orange">Title goes here</h2>
-                </section>
-
-                <!-- Slide with a large title -->
-                <section>
-                    <h2>Large title</h2>
-                    <aside class="notes">
-                        This will only display in the notes window.
-                    </aside>
-                </section>
-
-                <!-- Large image slide -->
-                <section class="image-slide">
-                    <h2>Title</h2>
-                    <img src="img/800x400.gif" alt="">
-                </section>
-
-                <!-- Slide with list items (list items are displayed at once) -->
-                <section>
-                    <h3>List title</h3>
-                    <ul>
-                        <li>List item 1</li>
-                        <li><i class="fa fa-camera-retro"></i>List item 2<img class="img-right" src="img/300x400.gif" alt="Placeholder image"></li>
-                        <li class="fa fa-camera-retro">List item 3<img class="img-right" src="img/300x400.gif" alt="Placeholder image"></li>
-                        <li>List item</li>
-                    </ul>
-                </section>
-
-                <!-- Slide with list items (fragmented list items) -->
-                <section>
-                    <h3>Fragmented list</h3>
-                    <ul>
-                        <li class="fragment">List item</li>
-                        <li class="fragment">List item</li>
-                        <li class="fragment">List item <img class="img-centered" src="img/500x200.gif" alt="Placeholder image"></li>
-                    </ul>
-                </section>
-
-                <!-- Slide with vertical slides underneath  -->
-                <section>
-                    <!-- Horizontal slide (This is one the same level as slide above) -->
-                    <section class="title-slide banner-3">
-                        <h2 class="yellow">Title (press down to see vertical slides)</h2>
-                    </section>
-
-                    <!-- The following slides are vertical, use down arrow key to navigate -->
-                    <!-- Centered paragraph  -->
-                    <section>
-                        <h3>Paragraph</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at scelerisque eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam placerat posuere nibh vel dapibus.</p>
-                    </section>
-
-                    <!-- Blockquote  -->
-                    <section>
-                        <h3>Blockquote</h3>
-                        <blockquote class="quotation-marks">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at scelerisque eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam placerat posuere nibh vel dapibus.
-                        </blockquote>
-                    </section>
-
-                    <!-- Nested lists-->
-                    <section>
-                        <h3>Nested lists</h3>
-                            <ul>
-                                <li>One</li>
-                                <li>Two</li>
-                                <li>Three</li>
-                                    <ul>
-                                        <li>Nested One</li>
-                                        <li>Nested Two</li>
-                                    </ul>
-                            </ul>
-                    </section>
-                </section>
-
-                <!-- Slide with code block -->
-                <section>
-                    <h3>Title</h3>
-                    <p>Some text</p>
-                    <pre><code data-trim contenteditable>
-function linkify( selector ) {
-    if( supports3DTransforms ) {
-
-        var nodes = document.querySelectorAll( selector );
-
-        for( var i = 0, len = nodes.length; i < len; i++ ) {
-            var node = nodes[i];
-
-            if( !node.className ) {
-                node.className += ' roll';
-            }
-        }
-    }
-}
-                    </code></pre>
-                </section>
-
-                <!-- Slide with full background image -->
-                <section data-background="img/800x600.gif">
-                    <h3>Image backgrounds</h3>
-                </section>
-
-                <!-- Slide with Catalyst slogan -->
-                <section class="image-slide">
-                    <img class="cat-slogan-image" src="css/theme/images/freedom-to-innovate.svg" alt="freedom to innovate">
-                </section>
-            </div>
-
-            <div class="footer">
-                <div class="scarf">
-                    <div class="scarf-orange"></div>
-                    <div class="scarf-yellow"></div>
-                    <div class="scarf-blue"></div>
-                    <div class="scarf-green"></div>
-                </div>
-                <div class="footer-inner">
-                    <div>
-                        <!-- NOTE: use only one of these. open-source-technologists is the standard -->
-                        <p class="open-source-technologists">open source technologists</p>
-                        <!-- <p class="freedom-to-innovate">freedom to innovate</p> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-
 
         <script src="lib/js/head.min.js"></script>
         <script src="js/reveal.js"></script>
