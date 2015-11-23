@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Kubernetes Patterns</title>
+
+        <meta name="author" content="Catalyst">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/catalyst.css" id="theme">
+        <link rel="stylesheet" href="css/font-awesome.css">
+
+        <!-- For syntax highlighting -->
+        <!-- <link rel="stylesheet" href="lib/css/zenburn.css"> -->
+        <link rel="stylesheet" href="lib/css/catalyst-syntax.css">
+
+        <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+        <script>
+            if( window.location.search.match( /print-pdf/gi ) ) {
+                var link = document.createElement( 'link' );
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+                document.getElementsByTagName( 'head' )[0].appendChild( link );
+            }
+        </script>
+
+        <style>
+            /* Add the ability to omit slides from the printed version (has to be after the print include)*/
+            @media print {
+                .reveal .slides section.no-print {
+                    display: none !important;
+                    visibility: hidden !important;
+                }
+            }
+        </style>
+        <style>
+            .reveal h1, .reveal h2, .reveal h3 {
+                color: #ba2025;
+            }
+        </style>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <!-- Please put any custom styles here -->
+        <style>
+
+        </style>
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <!-- Cover slide -->
+                <section>
+                    <h1 class="catalyst-logo">Catalyst</h1>
+                    <h3>Intro to Docker</h3>
+                    <p class="small-text">
+                        Presented by <a href="#">Donovan Jones</a>
+                    </p>
+                </section>
+
+                 <!-- Managing state -->
+                <section>
+                <section>
+                    <h3>Managing State</h3>
+                    <p>"In a cluster of ephemeral containers application state must exist outside of the containers."</p>
+                    <p>Ian Lewis, Google - <a href="https://speakerdeck.com/ianlewis/in-a-world-of-ephemeral-containers-how-do-we-keep-track-of-things-at-openstack-summit-tokyo">In a World of Ephemeral Containers, How Do We Keep Track of Things? @ OpenStack Summit Tokyo</a> (<a href="https://www.youtube.com/watch?v=aYs7IxMQzgg">video</a>)</p>
+                </section>
+                <section>
+                    <h3>Initial state</h3>
+                    <p>All containers start with exactly the same state which is derived from the image they are instantiated from.</p>
+                </section>
+                <section>
+                    <h3>What exactly is state?</h3>
+                    <ul>
+                    </ul>
+                </section>
+                <section>
+                    <h3>What exactly is state?</h3>
+                    <ul>
+                        <li>Our Database!</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>What exactly is state?</h3>
+                    <ul>
+                        <li>Our Database!</li>
+                        <li>Filesystem (volumes)</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>What exactly is state?</h3>
+                    <ul>
+                        <li>Our Database!</li>
+                        <li>Filesystem (volumes)</li>
+                        <li>Configuration (service discovery)</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>What exactly is state?</h3>
+                    <ul>
+                        <li>Our Database!</li>
+                        <li>Filesystem (volumes)</li>
+                        <li>Configuration (service discovery)</li>
+                        <li>Secrets</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>What exactly is state?</h3>
+                    <ul>
+                        <li>Our Database!</li>
+                        <li>Filesystem (volumes)</li>
+                        <li>Configuration (service discovery)</li>
+                        <li>Secrets</li>
+                        <li>Source Code?</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Managing Volumes</h3>
+                    <ul>
+                        <li>Normal Docker volumes are per host</li>
+                        <li>Kubernetes Persistent volumes</li>
+                        <li>Docker Engine 1.9 includes redesigned volume system with more plugins (eg <a href="https://docs.clusterhq.com/en/1.7.1/introduction/what-is-flocker.html">Flocker</a>)</li>
+                    </ul>
+                </section>
+                <section class="image-slide">
+                    <h2>Managing state - CAP</h2>
+                    <p>Managing state can be tricky</p>
+                    <img src="img/cap.png" alt="CAP" height="600" width="800">
+                </section>
+                <section>
+                    <h3>Patterns for Managing State</h3>
+                    <ul>
+                        <li>Outside the cluster (SEP)</li>
+                        <li>Adapted to run in cluster (eg MySQL inside cluster)</li>
+                        <li>Cluster native (eg Cassandra or Riak)</li>
+                        <li><a href="http://vitess.io/">vitess.io</a></li>
+                    </ul>
+                </section>
+                </section>
+
+                <section>
+                <section>
+                    <h3>Patterns for Composite Containers</h3>
+                    <p>
+                    <a href="http://blog.kubernetes.io/2015/06/the-distributed-system-toolkit-patterns.html">http://blog.kubernetes.io/2015/06/the-distributed-system-toolkit-patterns.html</a> (<a href=blog/">local</a>).
+                    </p>
+                    <ul>
+                        <li>Sidecar containers (eg logger, git synchroniser)</li>
+                        <li>Ambassador containers (local proxy to a service of unknown size)</li>
+                        <li>Adapter containers (normalize and abstract different services)</li>
+                    </ul>
+                </section>
+                <section class="image-slide">
+                    <h2>Sidecar containers</h2>
+                    <ul>
+                        <li>Modular and pluggable</li>
+                        <li>Reuse sidecar for different frontends</li>
+                        <li>Different team can maintain the sidecar</li>
+                        <li>Lower complexity inside specific containers</li>
+                    </ul>
+                    <img src="img/sidecar.png" alt="Sidecar">
+                </section>
+                <section class="image-slide">
+                    <h2>Ambassador containers</h2>
+                    <ul>
+                        <li>Its a proxy ...</li>
+                        <li>The solution behind the proxy can be as simple or complicated as the environment requires</li>
+                        <li>Also modular, reuse, lower complexity per container</li>
+                    </ul>
+                    <img src="img/ambassador.png" alt="Ambassador">
+                </section>
+                <section class="image-slide">
+                    <h2>Adapter containers</h2>
+                    <ul>
+                        <li>When containers want to talk to other systems</li>
+                        <li>Use adaptors to translate so that neither ends needs native support for each other protocols</li>
+                        <li>eg, monitoring systems, convert from app specific output to monitoring system format</li>
+                    </ul>
+                    <img src="img/adapter.png" alt="Adapter">
+                </section>
+                </section>
+
+
+        </div>
+
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Parallax scrolling
+                // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+                // parallaxBackgroundSize: '2100px 900px',
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
