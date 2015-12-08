@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Containers and Openstack</title>
+
+        <meta name="author" content="Catalyst">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/catalyst.css" id="theme">
+        <link rel="stylesheet" href="css/font-awesome.css">
+
+        <!-- For syntax highlighting -->
+        <!-- <link rel="stylesheet" href="lib/css/zenburn.css"> -->
+        <link rel="stylesheet" href="lib/css/catalyst-syntax.css">
+
+        <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+        <script>
+            if( window.location.search.match( /print-pdf/gi ) ) {
+                var link = document.createElement( 'link' );
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+                document.getElementsByTagName( 'head' )[0].appendChild( link );
+            }
+        </script>
+
+        <style>
+            /* Add the ability to omit slides from the printed version (has to be after the print include)*/
+            @media print {
+                .reveal .slides section.no-print {
+                    display: none !important;
+                    visibility: hidden !important;
+                }
+            }
+        </style>
+        <style>
+            .reveal h1, .reveal h2, .reveal h3 {
+                color: #ba2025;
+            }
+        </style>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <!-- Please put any custom styles here -->
+        <style>
+
+        </style>
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <!-- Cover slide -->
+                <section>
+                    <h1 class="catalyst-logo">Catalyst</h1>
+                    <h3>Containers and Openstack</h3>
+                    <p class="small-text">
+                        Presented by <a href="#">Donovan Jones</a>
+                    </p>
+                </section>
+
+                 <!-- What is Openstack? -->
+                <section>
+                <section>
+                    <h3>What is OpenStack?</h3>
+                    <p>IaaS</p>
+                    <p>Elastic computing resources</p>
+                    <p>Open Source project for building public and private clouds</p>
+                    <p>The only real option for building a stack to compete with AWS (Azure, GCE)</p>
+                    <p>Python</p>
+                </section>
+                <section class="image-slide">
+                    <h3>What is OpenStack?</h3>
+                    <img src="img/Openstack-software-diagram.png" alt="Openstack software diagram">
+                </section>
+                <section class="image-slide">
+                    <h3>What is OpenStack?</h3>
+                    <img src="img/Openstack_havana_conceptual_arch.png" alt="Openstack conceptual arch" height="600" width="800">
+                </section>
+                <section>
+                    <h3>Core Services</h3>
+                    <ul>
+                        <li>Compute (Nova)</li>
+                        <li>Networking (Neutron)</li>
+                        <li>Object Storage (Swift)</li>
+                        <li>Block Storage (Cinder)</li>
+                        <li>Identity Service (Keystone)</li>
+                        <li>Image Service (Glance)</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Optional Services</h3>
+                    <ul>
+                        <li>Dashboard (Horizon)</li>
+                        <li>Telemetry Service (Celiometer)</li>
+                        <li>Orchestration Service (Heat)</li>
+                        <li>Designate (DNS)</li>
+                        <li>Ironic (Bare-Metal Provisioning)</li>
+                        <li>And many more ..</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Services</h3>
+                    <ul>
+                        <li>Mix and match</li>
+                        <li>Operators can choose which services they wish to use</li>
+                        <li>Big Tent</li>
+                        <li>Projects scored by Adoption, Maturity and Age</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Why containers?</h3>
+                    <ul>
+                        <li>Unified control pane for running "workloads"</li>
+                        <li>VMs, Containers and Bare Metal</li>
+                        <li>Challenge of integrating a somewhat orthogonal architecture</li>
+                        <li>Ephemeral applications vs. long lived machines</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Container projects</h3>
+                    <ul>
+                        <li>Magnum - Containers as a Service</li>
+                        <li>Kolla - Containers and deployment tools for operating OpenStack clouds</li>
+                        <li>Nova docker driver</li>
+                    </ul>
+                </section>
+                </section>
+
+                 <!-- The summit -->
+                <section>
+                <section>
+                    <h3>The summit</h3>
+                    <ul>
+                        <li>Huge!</li>
+                        <li>Every 6 months</li>
+                        <li>Lots of big players (Cisco, HP, Intel, Red Hat, IBM, Canonical, VMware, EMC)</li>
+                        <li>Design summit and regular summit</li>
+                        <li>~6000 people</li>
+                        <li>14 Streams!</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Users</h3>
+                    <ul>
+                        <li>NTT</li>
+                        <li>Yahoo Japan</li>
+                        <li>NEC</li>
+                        <li>SK Telecom</li>
+                        <li>Huawei</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Buzzword bingo</h3>
+                    <ul>
+                        <li>Containers!</li>
+                        <li>SDN</li>
+                        <li>NFV</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Why me?</h3>
+                    <ul>
+                        <li>Catalyst Cloud</li>
+                        <li>Documentation, Training</li>
+                    </ul>
+                </section>
+                </section>
+
+                 <!-- Running Containers in OpenStack -->
+                <section>
+                <section>
+                    <h3>Running Containers in OpenStack - Roll your own</h3>
+                    <ul>
+                        <li>Roll your own</li>
+                        <li>Setup the LDK stack on compute</li>
+                        <li>eg: Docker Machine works well now</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Running Containers in OpenStack - Magnum</h3>
+                    <ul>
+                        <li>Sets up a Container Orchestration Engine within an Openstack tenant</li>
+                        <li>Exposes native COE API</li>
+                        <li>Production ready (ish)</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Magnum - Container Orchestration Engines</h3>
+                    <ul>
+                        <li>Kubernetes (most mature)</li>
+                        <li>Swarm</li>
+                        <li>Apache Mesos</li>
+                    </ul>
+                </section>
+                <section class="image-slide">
+                    <h3>Magnum Architecture</h3>
+                    <img src="img/800px-Magnum_architecture.png" alt="Magnum Architecture">
+                </section>
+                </section>
+
+                 <!-- Managing state -->
+                <section>
+                <section>
+                    <h3>Managing State</h3>
+                    <p>"In a cluster of ephemeral containers application state must exist outside of the containers."</p>
+                    <p>Ian Lewis, Google - <a href="https://speakerdeck.com/ianlewis/in-a-world-of-ephemeral-containers-how-do-we-keep-track-of-things-at-openstack-summit-tokyo">In a World of Ephemeral Containers, How Do We Keep Track of Things? @ OpenStack Summit Tokyo</a> (<a href="https://www.youtube.com/watch?v=aYs7IxMQzgg">video</a>)</p>
+                </section>
+                <section>
+                    <h3>What exactly is state?</h3>
+                    <ul>
+                        <li>Our Database!</li>
+                        <li>Filesystem (volumes)</li>
+                        <li>Configuration (service discovery)</li>
+                        <li>Secrets</li>
+                        <li>Source Code?</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Patterns for Managing State</h3>
+                    <ul>
+                        <li>Outside the cluster (SEP)</li>
+                        <li>Adapted to run in cluster (eg MySQL inside cluster)</li>
+                        <li>Cluster native (eg Cassandra or Riak)</li>
+                        <li><a href="http://vitess.io/">vitess.io</a></li>
+                    </ul>
+                </section>
+                </section>
+
+                 <!-- System Containers -->
+                <section>
+                <section>
+                    <h3>System Containers</h3>
+                    <ul>
+                        <li>System containers vs. application containers</li>
+                        <li>LXC</li>
+                        <li>OpenVZ</li>
+                        <li>Namespaces and cgroups were written for system containers</li>
+                        <li>Unified Kernel API</li>
+                        <li>Docker came along and stole the thunder</li>
+                        <li>Layers (UnionFS) and workflow</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>LXC/LXD</h3>
+                    <ul>
+                        <li>Written to be a drop-in replacement for KVM</li>
+                        <li>10x increase in number of instances on the same hardware</li>
+                        <li>Faster to start all instances</li>
+                        <li>Better disk and network IO (up to 40%)</li>
+                        <li>Security ...</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>OpenVZ</h3>
+                    <ul>
+                        <li>Application Catalogue</li>
+                        <li>Heat</li>
+                        <li>Murano</li>
+                        <li>Juju</li>
+                        <li>Docker Hub</li>
+                        <li>Overlapping functionality</li>
+                        <li>Expect consolidation</li>
+                    </ul>
+                </section>
+                </section>
+
+                 <!-- Summing up -->
+                <section>
+                <section>
+                    <h3>Summing up</h3>
+                    <ul>
+                        <li>Deep integration required particularity for networking and volumes</li>
+                        <li>Running containers in VMs is common but not ideal for performance</li>
+                        <li>People are running containers in VMs due to security concerns</li>
+                        <li>Original container use cases are still valid and interesting (see LXC/LXD)</li>
+                        <li>Orthogonal concerns (application vs machine abstractions) can make for difficult fit</li>
+                        <li>So many ways to orchestrate things, expect consolidation</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Future</h3>
+                    <ul>
+                        <li>Native multi tenanting in Kubernetes?</li>
+                        <li>Containers running on bare metal kernels not VM kernels</li>
+                        <li>Persistent volumes backed by Block Storage</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Application catalogues and stack builders</h3>
+                    <ul>
+                        <li>Application Catalogue</li>
+                        <li>Heat</li>
+                        <li>Murano</li>
+                        <li>Juju</li>
+                        <li>Docker Hub</li>
+                        <li>Overlapping functionlity</li>
+                        <li>Expect consolidation</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Questions?</h3>
+                </section>
+                </section>
+
+
+        </div>
+
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Parallax scrolling
+                // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+                // parallaxBackgroundSize: '2100px 900px',
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
