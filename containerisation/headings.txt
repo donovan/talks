@@ -1,0 +1,25 @@
+* what are we trying to achieve, get some context to understand docker
+* history (types)
+* system vs process
+* the value proposition of system containers
+* cgroups and namespaces
+** list of namespaces
+** single api
+* enter docker
+** cocroft diagram
+* docker innovations
+** workflow (push, pull, hub)
+** workflow diagrams
+** Dockerfile
+** process level
+* what does docker help us do better?
+** immutable
+** devops
+** microservices
+** ci antipatterns
+** machine level vs process level units
+* COEs
+* Kubernetes
+* what kubernetes enables at the data center level
+
+* tech recap

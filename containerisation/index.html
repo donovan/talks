@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Containerisation</title>
+
+        <meta name="author" content="Catalyst">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/catalyst.css" id="theme">
+        <link rel="stylesheet" href="css/font-awesome.css">
+
+        <!-- For syntax highlighting -->
+        <!-- <link rel="stylesheet" href="lib/css/zenburn.css"> -->
+        <link rel="stylesheet" href="lib/css/catalyst-syntax.css">
+
+        <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+        <script>
+            if( window.location.search.match( /print-pdf/gi ) ) {
+                var link = document.createElement( 'link' );
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+                document.getElementsByTagName( 'head' )[0].appendChild( link );
+            }
+        </script>
+
+        <style>
+            /* Add the ability to omit slides from the printed version (has to be after the print include)*/
+            @media print {
+                .reveal .slides section.no-print {
+                    display: none !important;
+                    visibility: hidden !important;
+                }
+            }
+        </style>
+        <style>
+            .reveal h1, .reveal h2, .reveal h3 {
+                color: #ba2025;
+            }
+        </style>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <!-- Please put any custom styles here -->
+        <style>
+
+        </style>
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <!-- Cover slide -->
+                <section>
+                    <h1 class="catalyst-logo">Catalyst</h1>
+                    <h3>Containerisation</h3>
+                    <p class="small-text">
+                        Presented by <a href="#">Donovan Jones</a>
+                    </p>
+                </section>
+
+                <section>
+                    <h3>What is this talk about?</h3>
+                    <p>Docker is a very popular technology and is often referred to as containerisation, what is containerisation? How does Docker differ from other containerisation technologies? Why is it popular? What does it do differently? What is the historical context?</p>
+                </section>
+
+                <section>
+                    <h3>What are containers?</h3>
+                    <ul>
+                        <li>Isolated user spaces with a shared Kernel</li>
+                        <li>Sharing with isolation</li>
+                        <li>AKA: Jails, Zones, Operating-system-level virtualization, Virtual (Private) Servers</li>
+                    </ul>
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>Chroot</h2>
+                    <img src="img/root.jpg" alt="Root">
+                </section>
+
+                <section>
+                    <h3>Chroot</h3>
+                    <ul>
+                        <li>Introduced in V7 Unix in 1979</li>
+                        <li>Changes the apparent root directory for a process and its children</li>
+                    </ul>
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>FreeBSD Jails</h2>
+                    <img src="img/jail.jpg" alt="Jail">
+                </section>
+
+                <section>
+                    <h3>FreeBSD Jails</h3>
+                    <ul>
+                        <li>Introduced in FreeBSD 4.0 (2000)</li>
+                        <li>A process is jailed within a virtual environment</li>
+                        <li>Processes within jails cannot access other jailed environment</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Solaris Containers/Zones</h3>
+                    <ul>
+                        <li>Introduced with Solaris 10 in 2004</li>
+                        <li>System resource controls</li>
+                        <li>Boundary separation provided by zones</li>
+                        <li>Container = resource controls + zones</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Linux-VServer</h3>
+                    <ul>
+                        <li>Introduced 2001</li>
+                        <li>Largely defunct</li>
+                        <li>Not everything is virtualized (networking, parts of /proc and /sys)</li>
+                        <li>Requires a patched Kernel</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>OpenVZ</h3>
+                    <ul>
+                        <li>Released in 2005</li>
+                        <li>Requires a patched Kernel</li>
+                        <li>Mostly used by VPS service providers</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>LXC</h3>
+                    <ul>
+                        <li>Present in mainline Kernel</li>
+                        <li>Built directly on cgroups and namespaces</li>
+                        <li>Complemented by LXD Daemon</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Pros</h3>
+                    <ul>
+                        <li>When compared to full virtualization less overhead means:</li>
+                        <li>Higher Density (10x)</li>
+                        <li>Better Performance (40% better disk and network IO)</li>
+                        <li>Faster startup</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Cons</h3>
+                    <ul>
+                        <li>Difficult to achieve full isolation securely</li>
+                        <li>Shared Kernel means no mixed Operating Systems</li>
+                        <li>Sharing and isolation at odds</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Use Case</h3>
+                    <ul>
+                        <li>To provide virtual servers with less overhead than full virtualization</li>
+                        <li>System level virtualization</li>
+                        <li>Virtual Private Servers</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Namespaces and Cgroups</h3>
+                    <ul>
+                        <li>Cgroups address sharing</li>
+                        <li>Namespaces address isolation</li>
+                        <li>"Unified" Linux API</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Namespaces</h3>
+                    <ul>
+                        <li>IPC - System V IPC, POSIX message queues</li>
+                        <li>Network - Network devices, stacks, ports, etc.</li>
+                        <li>Mount - Mount points</li>
+                        <li>PID - Process IDs</li>
+                        <li>User - User and group IDs</li>
+                        <li>UTS - Hostname and NIS domain name</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Enter docker</h3>
+                    <ul>
+                        <li>Process level container vs machine level container</li>
+                        <li>Flattens dev/testing/prod differences</li>
+                        <li>Portability</li>
+                        <li>Process encapsulation</li>
+                    </ul>
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>Docker</h2>
+                    <img src="img/docker.png" alt="Docker">
+                </section>
+
+                <section>
+                    <h3>The rise of docker</h3>
+                    <ul>
+                        <li>Came from nowhere</li>
+                        <li>Hype!?</li>
+                        <li>Pulled all the bits together</li>
+                        <li>The bits have been coming together over the last 10 years</li>
+                        <li>namespaces, cgroups, LXC etc.</li>
+                    </ul>
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>Rise of Docker</h2>
+                    <img src="img/rise-of-docker.jpg" alt="Rise of Docker" height="600" width="800">
+                </section>
+
+                <section>
+                    <h3>Dockers innovations</h3>
+                    <ul>
+                        <li>Process level vs System level</li>
+                        <li>Layers</li>
+                        <li>Workflow: push and pull to a registry</li>
+                        <li>Docker files (configuration in code)</li>
+                        <li>Portable encapsulated environment</li>
+                        <li>Command line tools that make sense and have familiar syntax (run, build, top, rm, push, pull)</li>
+                    </ul>
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>Workflow</h2>
+                    <img src="img/workflow.png" alt="">
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>Layering (via a Union file system)</h2>
+                    <img src="img/layering.png" alt="">
+                </section>
+
+                <section>
+                    <h3>What does docker help us do better?</h3>
+                    <ul>
+                        <li>Immutable Architecture / Infrastructure</li>
+                        <li>DevOps</li>
+                        <li>Microservices</li>
+                        <li>Continuous Iintegration / Continuous Delivery</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Immutable Architecture/Infrastructure</h3>
+                    <ul>
+                        <li>The environment is defined in code</li>
+                        <li>If you need to change _anything_ you create a new instance and destroy the old one</li>
+                        <li>Cattle vs Pets</li>
+                        <li>Docker makes it much more likely you will work in this way as containers are ephemeral</li>
+                        <li>Procedural vs Declarative syntax</li>
+                    </ul>
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>Immutable Architecture</h2>
+                    <img src="img/immutable_infrastructure.gif" alt="Immutable Architecture" height="500" width="800">
+                </section>
+
+                <section>
+                    <h3>Microservices</h3>
+                    <ul>
+                        <li>A suite of small services, each running in its own process and communicating with lightweight mechanisms</li>
+                        <li>Services can be implemented with entirely different stacks</li>
+                        <li>Services can be developed, maintained, and updated independently</li>
+                        <li>Often use well defined REST APIs to communicate</li>
+                        <li>If a message bus is used then its likely to be lightweight (ZeroMQ vs ESB)</li>
+                    </ul>
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>Netflix Microservices</h2>
+                    <img src="img/netflix-microservices.jpg" alt="Netflix Microservices" height="600" width="800">
+                </section>
+
+
+                <section>
+                    <h3>DevOps</h3>
+                    <ul>
+                        <li>You build it you run it</li>
+                        <li>Distinction between who "owns" the service and who "owns" the platform the service runs on</li>
+                        <li>If dev is like production the developer thinks about how it runs in production</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Continuous delivery</h3>
+                    <ul>
+                        <li>Automated Pipeline from developer commit to production deployment</li>
+                        <li>Requires Continuous Integration where every commit triggers all the tests</li>
+                        <li>Requires lots of tests and automation</li>
+                        <li>Docker can help spin up test infrastructure</li>
+                    </ul>
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>Continuous delivery</h2>
+                    <img src="img/delivery.jpg" alt="Delivery">
+                </section>
+
+                <section>
+                    <h3>Continuous delivery antipatterns</h3>
+                    <ul>
+                        <li>Docker makes it difficult to do any of these:</li>
+                        <li>Deploying software manually</li>
+                        <li>Deploying to a production-like environment only after development is complete</li>
+                        <li>Manual configuration of production environments</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Appropriate unit of scaling</h3>
+                    <ul>
+                        <li>Machine level vs process level scaling</li>
+                        <li>Scale what needs scaling</li>
+                        <li>Scale services not webservers (hardware)</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Docker ecosystem</h3>
+                    <ul>
+                        <li>An explosion of tools</li>
+                        <li>Hard to keep up</li>
+                    </ul>
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>Docker ecosystem</h2>
+                    <img src="img/docker-ecosystem.png" alt="Docker Ecosystem" height="600" width="800">
+                </section>
+
+                <section>
+                    <h3>The stack</h3>
+                    <ul>
+                        <li>The LAMP stack equivalent</li>
+                        <li>Container Orchestration Engines</li>
+                        <li>Linux - Docker - COE - ?</li>
+                        <li>Often LDK (Linux Docker Kubernetes)</li>
+                        <li>Higher level projects build on this stack (eg OpenShift PaaS)</li>
+                    </ul>
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>The stack</h2>
+                    <img src="img/stack.jpg" alt="Stack">
+                </section>
+
+                <section>
+                    <h3>Docker ecosystem - Container Orchestration Engines</h3>
+                    <p>Engine for orchestrating container workloads, term comes from the OpenStack Magnum project.</p>
+                    <ul>
+                        <li>Docker Compose</li>
+                        <li>Docker Swarm</li>
+                        <li>Kubernetes</li>
+                        <li>Apache Mesos</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Kubernetes</h3>
+                    <ul>
+                        <li>Container Orchestration Engine</li>
+                        <li>Started by Google</li>
+                        <li>Inspired by Borg</li>
+                        <li>Open source project written in Go</li>
+                        <li>Cloud Native Computing Foundation</li>
+                        <li>Manages services not machines</li>
+                    </ul>
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>Borg</h2>
+                    <img src="img/borg.jpg" alt="Borg">
+                </section>
+
+                <section>
+                    <h3>Borg</h3>
+                    <ul>
+                        <li>The future is here its just not evenly distributed..</li>
+                        <li>2 Billion containers/week</li>
+                        <li>Why is google open sourcing Kurbenetes?</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Kubernetes Components</h3>
+                    <ul>
+                        <li>Pods - an ephemeral group of co-scheduled containers that together provide a service</li>
+                        <li>Flat Networking Space - each pod has an IP and can talk to other pods, within a pod containers communicate via localhost (need to manage ports)</li>
+                        <li>Labels - Key value pairs, used to label pods and other objects so the scheduler can operate on them</li>
+                        <li>Services - stable endpoints comprised of one or more pods (external services are supported)</li>
+                        <li>Replication Controllers - the orchestrator that controls and monitors the pods within a service (known as replicas)</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Pods</h3>
+                    <ul>
+                        <li>Co-locate containers</li>
+                        <li>Assigned an IP address (important for port space and migration)</li>
+                        <li>Unit of deployment and migration</li>
+                        <li>Easy migration = high utilisation</li>
+                        <li>Scale service by scaling pods</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>How will these technologies change what we do?</h3>
+                    <ul>
+                        <li>More DevOps</li>
+                        <li>More Microservices</li>
+                        <li>Infrastructure ops running generic platforms (eg. openstack, kubernetes).</li>
+                        <li>Or _no_ infrastructure and rely on the public cloud</li>
+                        <li>Smaller teams focusing on building services</li>
+                        <li>Building larger apps by plugging in services</li>
+                        <li>Move to NoSQL and other distributed friendly data stores</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>How will these technologies change what we do?</h3>
+                    <ul>
+                        <li>Services shared between clients?</li>
+                        <li>Easier to upgrade to newer technologies and languages</li>
+                        <li>Services designed to function on generic resources (no more snowflake hardware)</li>
+                        <li>Efficient scale out (by service not machine)</li>
+                        <li>Better resource utilisation</li>
+                        <li>We all become public cloud consumers?</li>
+                    </ul>
+                </section>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Parallax scrolling
+                // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+                // parallaxBackgroundSize: '2100px 900px',
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
