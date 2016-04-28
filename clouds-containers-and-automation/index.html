@@ -75,8 +75,8 @@
                 <section>
                 <section>
                     <h3>Why Automate?</h3>
-                    <p>Automation is the key to speed, consistency, scalability and repeatability.</p>
                     <p>Automation is about taking manual processes and placing technology around them to make them repeatable.</p>
+                    <p>Automation is the key to speed, consistency, scalability and repeatability.</p>
                 </section>
                 <section>
                     <h3>Why Automate?</h3>
@@ -101,7 +101,6 @@
                         <li>Immutable Infrastructure</li>
                         <li>Continuous Integration</li>
                         <li>Continuous Deployment</li>
-                        <li>MTTR vs. MTBF</li>
                         <li>A key DevOps practice</li>
                         <li>Essential to Microservice deployment at scale</li>
                     </ul>
@@ -119,8 +118,28 @@
                 </section>
                 <!-- Large image slide -->
                 <section class="image-slide">
+                    <h2>Cattle vs Pets</h2>
+                    <img src="../img/servers_pets_or_cattle.jpg" alt="Cattle vs Pets" height="600" width="800">
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
                     <h2>Immutable Architecture</h2>
                     <img src="../img/immutable_infrastructure.gif" alt="Immutable Architecture" height="600" width="800">
+                </section>
+                <section>
+                    <h3>Continuous integration</h3>
+                    <ul>
+                        <li>Every developer commit triggers a merge/build/test cycle</li>
+                        <li>Commits that pass testing are release candidates</li>
+                        <li>The process is automated via</li>
+                            <ul>
+                                <li>git hooks</li>
+                                <li>jenkins</li>
+                                <li>unit tests</li>
+                                <li>automated functional / integration tests</li>
+                            </ul>
+                    </ul>
                 </section>
                 <section>
                     <h3>Continuous delivery</h3>
@@ -138,21 +157,6 @@
                         <li>Manual configuration of production environments</li>
                         <li>Deploying to a production-like environment only after development is complete</li>
                     </ul>
-                </section>
-                <section>
-                    <h3>MTTR vs. MTBF</h3>
-                    <ul>
-                        <li>MTTR = Mean Time To Repair</li>
-                        <li>MTBF = Mean Time Between Failures</li>
-                        <li>MTTD = Mean Time To Detection</li>
-                        <li>A low MTTR requires a low MTTD</li>
-                        <li>A low MTTR requires Automation</li>
-                        <li>A low MTTD requires a good Monitoring</li>
-                    </ul>
-                </section>
-                <section class="image-slide">
-                    <h2>MTTR vs. MTBF</h2>
-                    <img src="../img/Screen-shot-2010-11-07-at-1.08.39-PM.png" alt="MTTR vs. MTBF" height="600" width="800">
                 </section>
                 <section class="image-slide">
                     <h2>DevOps</h2>
@@ -212,7 +216,7 @@
                     <ul>
                         <li>Best known, often equated with "Automation"</li>
                         <li>Mostly about configuring servers (instances)</li>
-                        <li>Agentless vs Agent(ful)</li>
+                        <li>Agentless vs Agents</li>
                         <li>Often declarative syntax</li>
                     </ul>
                 </section>
@@ -306,39 +310,60 @@
                     <h3>What does this mean for you?</h3>
                     <p>Automate things!</p>
                     <p>Learn automation tools and practices because they are at the heart of todays IT</p>
+                    <p>The types of automation you will be using will be largely dependent on the type of organisation you are working for</p>
+                    <p>You will need to be following software development workflows even if you are a sysdamin or network engineer</p>
                 </section>
                 <section>
                     <h3>What does this mean for NZ?</h3>
-                    <p>No infrastructure in NZ and all our computing is done on AWS, Azure or GCE in Sydney?</p>
+                    <p>No infrastructure in NZ and all our computing is done on AWS, Azure or Google Cloud Platform in Sydney?</p>
                 </section>
                 <section>
-                    <h3>Reasons why there will still be infrastructure in NZ?</h3>
+                    <h3>Reasons why there will still be infrastructure in NZ</h3>
                     <ul>
                         <li>Inertia</li>
-                        <li>Local computation</li>
+                        <li>Local computation for local infrastructure</li>
+                        <li>Computation closer to the edge</li>
                         <li>Latency</li>
                         <li>Sovereignty</li>
                         <li>Monopoly avoidance</li>
                     </ul>
                 </section>
                 <section>
+                    <h3>Greenfields vs. Legacy</h3>
+                    <p>Greenfields projects vs. supporting legacy systems</p>
+                </section>
+                <section>
+                    <h3>OpenStack Workloads</h3>
+                    <ul>
+                        <li>Big Data / Science / HPC</li>
+                        <li>Public Cloud</li>
+                        <li>Private Cloud</li>
+                        <li>Telco SDN / NFV</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Public cloud usage</h3>
+                    <ul>
+                        <li>IaaS (using EC2 directly)</li>
+                        <li>CaaS (GCE Kubernetes, Openstack Magnum)</li>
+                        <li>PaaS (Openshift, Heroku)</li>
+                        <li>SaaS (Xero, Gmail, Office 365)</li>
+                        <li>Other services (Machine learning, blockchain etc. etc.)</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Software is eating the world</h3>
+                    <p>Software is eating the world. This includes the "old" IT world and hardware.</p>
+                </section>
+                <section>
                     <h3>What about containers?</h3>
                     <p>Container are the future but the future is not evenly distributed. We will be dealing with non containerised workloads for many years yet.</p>
-                </section>
-                <section>
-                    <h3>What does this mean for you?</h3>
-                    <p>Greenfields projects vs. supporting legacy</p>
-                    <p>Greenfields projects built entirely on the public cloud using third pasty services still need "glue"</p>
-                </section>
-                <section>
-                    <h3>What does this mean for you?</h3>
-                    <p>Software is eating the world. This includes the "old" IT world</p>
                 </section>
                 <section>
                     <h3>What about Windows?</h3>
                     <ul>
                         <li>Traditional Windows Server administration is enforced Snowflake (point and click)</li>
-                        <li>Modern Windows Server administration looks more and more like linux</li>
+                        <li>Modern Windows Server administration looks more and more like Linux</li>
                         <li>Windows Server Core</li>
                         <li>WSL (Ubuntu bash on Windows 10)</li>
                         <li>Powershell (used by Ansible for Windows)</li>
@@ -361,6 +386,24 @@
                         <li>Ansible</li>
                         <li>Kubernetes and the other COEs</li>
                     </ul>
+                </section>
+                </section>
+
+                <section>
+                <section>
+                    <h3>MTTR vs. MTBF</h3>
+                    <ul>
+                        <li>MTTR = Mean Time To Repair</li>
+                        <li>MTBF = Mean Time Between Failures</li>
+                        <li>MTTD = Mean Time To Detection</li>
+                        <li>A low MTTR requires a low MTTD</li>
+                        <li>A low MTTR requires Automation</li>
+                        <li>A low MTTD requires a good Monitoring</li>
+                    </ul>
+                </section>
+                <section class="image-slide">
+                    <h2>MTTR vs. MTBF</h2>
+                    <img src="../img/Screen-shot-2010-11-07-at-1.08.39-PM.png" alt="MTTR vs. MTBF" height="600" width="800">
                 </section>
                 </section>
 
