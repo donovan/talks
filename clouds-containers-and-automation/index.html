@@ -96,11 +96,11 @@
                     <h3>What does Automation enable?</h3>
                 </section>
                 <section>
-                    <h3>Why Automate?</h3>
+                    <h3>What does Automation enable?</h3>
                     <ul>
                         <li>Immutable Infrastructure</li>
-                        <li>Continious Integration</li>
-                        <li>Continious Deployment</li>
+                        <li>Continuous Integration</li>
+                        <li>Continuous Deployment</li>
                         <li>MTTR vs. MTBF</li>
                         <li>A key DevOps practice</li>
                         <li>Essential to Microservice deployment at scale</li>
@@ -120,7 +120,7 @@
                 <!-- Large image slide -->
                 <section class="image-slide">
                     <h2>Immutable Architecture</h2>
-                    <img src="http://s.radar.oreilly.com/wp-files/2/2015/06/immutable_infrastructure.gif" alt="Immutable Architecture" height="600" width="800">
+                    <img src="../img/immutable_infrastructure.gif" alt="Immutable Architecture" height="600" width="800">
                 </section>
                 <section>
                     <h3>Continuous delivery</h3>
@@ -152,16 +152,30 @@
                 </section>
                 <section class="image-slide">
                     <h2>MTTR vs. MTBF</h2>
-                    <img src="http://www.kitchensoap.com/wp-content/uploads/2010/11/Screen-shot-2010-11-07-at-1.08.39-PM.png" alt="MTTR vs. MTBF" height="600" width="800">
+                    <img src="../img/Screen-shot-2010-11-07-at-1.08.39-PM.png" alt="MTTR vs. MTBF" height="600" width="800">
                 </section>
                 <section class="image-slide">
                     <h2>DevOps</h2>
-                    <img src="http://techbeacon.com/sites/default/files/picture1_1.png" alt="DevOps" height="496" width="634">
+                    <img src="../img/picture1_1.png" alt="DevOps" height="496" width="634">
                 </section>
                 <section class="image-slide">
                     <h2>DevOps</h2>
-                    <img src="https://image.slidesharecdn.com/devopscommonusecasesarchitecturesbestpractices-150529001048-lva1-app6892/95/devops-common-use-cases-architectures-best-practices-22-638.jpg?cb=1432858606" alt="DevOps" height="359" width="638">
+                    <img src="../img/devops-common-use-cases-architectures-best-practices-22-638.jpg" alt="DevOps" height="359" width="638">
                 </section>
+                <section>
+                    <h3>Microservices</h3>
+                    <ul>
+                        <li>Each microservice needs a full dev to prod pipeline</li>
+                        <li>You have N microservices</li>
+                        <li>Automation is the only reasonable way to achieve this</li>
+                    </ul>
+                </section>
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>Netflix Microservices</h2>
+                    <img src="../img/netflix-microservices.jpg" alt="Netflix Microservices" height="600" width="800">
+                </section>
+
                 </section>
 
                 <section>
@@ -179,10 +193,9 @@
                 <section>
                     <h3>Provisioning</h3>
                     <ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
+                        <li>Usually bare metal</li>
+                        <li>OS installation</li>
+                        <li>Then bootstrap configuration management</li>
                     </ul>
                 </section>
                 <section>
@@ -197,10 +210,10 @@
                 <section>
                     <h3>Configuration Management</h3>
                     <ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
+                        <li>Best known, often equated with "Automation"</li>
+                        <li>Mostly about configuring servers (instances)</li>
+                        <li>Agentless vs Agent(ful)</li>
+                        <li>Often declarative syntax</li>
                     </ul>
                 </section>
                 <section>
@@ -215,10 +228,8 @@
                 <section>
                     <h3>Application Deployment</h3>
                     <ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
+                        <li>Overlaps/integrates with CI/CD tools (eg Jenkins)</li>
+                        <li>Quite often bespoke software</li>
                     </ul>
                 </section>
                 <section>
@@ -236,7 +247,7 @@
                         <li>Build the entire stack (networks, routers, security groups, instances etc.)</li>
                         <li>Some tools are cross cloud (ansible, terraform)</li>
                         <li>Higher level than configuration management on individual instances</li>
-                        <li>Orchestration of other services (DNS,CDN,LB etc.)</li>
+                        <li>Orchestration of other services (DNS, CDN, LB etc.)</li>
                     </ul>
                 </section>
                 <section>
@@ -253,7 +264,7 @@
                     <h3>Security &amp; Compliance</h3>
                     <ul>
                         <li>Test Driven Infrastructure</li>
-                        <li>Regression testing of secuirty issues</li>
+                        <li>Regression testing of security issues</li>
                         <li>PCI or government security standard compliance</li>
                         <li>Security patching</li>
                     </ul>
@@ -271,6 +282,8 @@
                     <h3>Container Orchestration Engines</h3>
                     <ul>
                         <li>Provide a control plane or operating system on which to run containerised workloads</li>
+                        <li>Infrastructure is abstracted so the DevOps team only cares about the application architecture and its scaling requirements</li>
+                        <li>Runs on IaaS somewhere</li>
                     </ul>
                 </section>
                 <section>
@@ -287,26 +300,50 @@
                 </section>
                 </section>
 
-                 <!-- What is Openstack? -->
+                 <!-- What does this mean for you? -->
                 <section>
                 <section>
                     <h3>What does this mean for you?</h3>
-                    <p>IaaS</p>
-                    <p>Elastic computing resources</p>
-                    <p>Open Source project for building public and private clouds</p>
-                    <p>The only real option for building a stack to compete with AWS (Azure, GCE)</p>
-                    <p>Python</p>
+                    <p>Automate things!</p>
+                    <p>Learn automation tools and practices because they are at the heart of todays IT</p>
+                </section>
+                <section>
+                    <h3>What does this mean for NZ?</h3>
+                    <p>No infrastructure in NZ and all our computing is done on AWS, Azure or GCE in Sydney?</p>
+                </section>
+                <section>
+                    <h3>Reasons why there will still be infrastructure in NZ?</h3>
+                    <ul>
+                        <li>Inertia</li>
+                        <li>Local computation</li>
+                        <li>Latency</li>
+                        <li>Sovereignty</li>
+                        <li>Monopoly avoidance</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>What about containers?</h3>
+                    <p>Container are the future but the future is not evenly distributed. We will be dealing with non containerised workloads for many years yet.</p>
+                </section>
+                <section>
+                    <h3>What does this mean for you?</h3>
+                    <p>Greenfields projects vs. supporting legacy</p>
+                    <p>Greenfields projects built entirely on the public cloud using third pasty services still need "glue"</p>
+                </section>
+                <section>
+                    <h3>What does this mean for you?</h3>
+                    <p>Software is eating the world. This includes the "old" IT world</p>
                 </section>
                 <section>
                     <h3>What about Windows?</h3>
                     <ul>
-                        <li>Traditional Windows Server Adminstaration is enforced Snowflake (point and click)</li>
-                        <li>Modern Windows Server Adminstaration looks more and more like linux</li>
+                        <li>Traditional Windows Server administration is enforced Snowflake (point and click)</li>
+                        <li>Modern Windows Server administration looks more and more like linux</li>
                         <li>Windows Server Core</li>
-                        <li>WSL (ubuntu bash on windows)</li>
-                        <li>Powershell (used by Ansible for windows)</li>
+                        <li>WSL (Ubuntu bash on Windows 10)</li>
+                        <li>Powershell (used by Ansible for Windows)</li>
                         <li>Docker on Windows</li>
-                        <li>SSHD on windows</li>
+                        <li>SSHD on Windows</li>
                     </ul>
                 </section>
                 <section>
@@ -315,225 +352,15 @@
                         <li>SDN</li>
                         <li>NFV</li>
                         <li>Ansible network modules</li>
-                        <li>WSL (ubuntu bash on windows)</li>
-                        <li>Powershell (used by Ansible for windows)</li>
-                        <li>Docker on Windows</li>
-                        <li>SSHD on windows</li>
                     </ul>
                 </section>
                 <section>
-                    <h3>Optional Services</h3>
+                    <h3>Technologies to watch</h3>
                     <ul>
-                        <li>Dashboard (Horizon)</li>
-                        <li>Telemetry Service (Celiometer)</li>
-                        <li>Orchestration Service (Heat)</li>
-                        <li>Designate (DNS)</li>
-                        <li>Ironic (Bare-Metal Provisioning)</li>
-                        <li>And many more ..</li>
+                        <li>OpenStack</li>
+                        <li>Ansible</li>
+                        <li>Kubernetes and the other COEs</li>
                     </ul>
-                </section>
-                <section>
-                    <h3>Services</h3>
-                    <ul>
-                        <li>Mix and match</li>
-                        <li>Operators can choose which services they wish to use</li>
-                        <li>Big Tent</li>
-                        <li>Projects scored by Adoption, Maturity and Age</li>
-                    </ul>
-                </section>
-                <section>
-                    <h3>Why containers?</h3>
-                    <ul>
-                        <li>Unified control pane for running "workloads"</li>
-                        <li>VMs, Containers and Bare Metal</li>
-                        <li>Challenge of integrating a somewhat orthogonal architecture</li>
-                        <li>Ephemeral applications vs. long lived machines</li>
-                    </ul>
-                </section>
-                <section>
-                    <h3>Container projects</h3>
-                    <ul>
-                        <li>Magnum - Containers as a Service</li>
-                        <li>Kolla - Containers and deployment tools for operating OpenStack clouds</li>
-                        <li>Nova docker driver</li>
-                    </ul>
-                </section>
-                </section>
-
-                 <!-- The summit -->
-                <section>
-                <section>
-                    <h3>The summit</h3>
-                    <ul>
-                        <li>Huge!</li>
-                        <li>Every 6 months</li>
-                        <li>Lots of big players (Cisco, HP, Intel, Red Hat, IBM, Canonical, VMware, EMC)</li>
-                        <li>Design summit and regular summit</li>
-                        <li>~6000 people</li>
-                        <li>14 Streams!</li>
-                    </ul>
-                </section>
-                <section>
-                    <h3>Users</h3>
-                    <ul>
-                        <li>NTT</li>
-                        <li>Yahoo Japan</li>
-                        <li>NEC</li>
-                        <li>SK Telecom</li>
-                        <li>Huawei</li>
-                    </ul>
-                </section>
-                <section>
-                    <h3>Buzzword bingo</h3>
-                    <ul>
-                        <li>Containers!</li>
-                        <li>SDN</li>
-                        <li>NFV</li>
-                    </ul>
-                </section>
-                <section>
-                    <h3>Why me?</h3>
-                    <ul>
-                        <li>Catalyst Cloud</li>
-                        <li>Documentation, Training</li>
-                    </ul>
-                </section>
-                </section>
-
-                 <!-- Running Containers in OpenStack -->
-                <section>
-                <section>
-                    <h3>Running Containers in OpenStack - Roll your own</h3>
-                    <ul>
-                        <li>Roll your own</li>
-                        <li>Setup the LDK stack on compute</li>
-                        <li>eg: Docker Machine works well now</li>
-                    </ul>
-                </section>
-                <section>
-                    <h3>Running Containers in OpenStack - Magnum</h3>
-                    <ul>
-                        <li>Sets up a Container Orchestration Engine within an Openstack tenant</li>
-                        <li>Exposes native COE API</li>
-                        <li>Production ready (ish)</li>
-                    </ul>
-                </section>
-                <section>
-                    <h3>Magnum - Container Orchestration Engines</h3>
-                    <ul>
-                        <li>Kubernetes (most mature)</li>
-                        <li>Swarm</li>
-                        <li>Apache Mesos</li>
-                    </ul>
-                </section>
-                <section class="image-slide">
-                    <h3>Magnum Architecture</h3>
-                    <img src="img/800px-Magnum_architecture.png" alt="Magnum Architecture">
-                </section>
-                <section>
-                    <h3>Kuryr</h3>
-                    <ul>
-                        <li>Maps Docker libnetwork to Neutron API</li>
-                        <li>Avoids multiple overlay networks</li>
-                    </ul>
-                </section>
-                <section class="image-slide">
-                    <h3>Kuryr</h3>
-                    <img src="img/kuryr.jpg" alt="Kuryr">
-                </section>
-                </section>
-
-                 <!-- Managing state -->
-                <section>
-                <section>
-                    <h3>Managing State</h3>
-                    <p>"In a cluster of ephemeral containers application state must exist outside of the containers."</p>
-                    <p>Ian Lewis, Google - <a href="https://speakerdeck.com/ianlewis/in-a-world-of-ephemeral-containers-how-do-we-keep-track-of-things-at-openstack-summit-tokyo">In a World of Ephemeral Containers, How Do We Keep Track of Things? @ OpenStack Summit Tokyo</a> (<a href="https://www.youtube.com/watch?v=aYs7IxMQzgg">video</a>)</p>
-                </section>
-                <section>
-                    <h3>What exactly is state?</h3>
-                    <ul>
-                        <li>Our Database!</li>
-                        <li>Filesystem (volumes)</li>
-                        <li>Configuration (service discovery)</li>
-                        <li>Secrets</li>
-                        <li>Source Code?</li>
-                    </ul>
-                </section>
-                <section>
-                    <h3>Patterns for Managing State</h3>
-                    <ul>
-                        <li>Outside the cluster (SEP)</li>
-                        <li>Adapted to run in cluster (eg MySQL inside cluster)</li>
-                        <li>Cluster native (eg Cassandra or Riak)</li>
-                        <li><a href="http://vitess.io/">vitess.io</a></li>
-                    </ul>
-                </section>
-                </section>
-
-                 <!-- System Containers -->
-                <section>
-                <section>
-                    <h3>System Containers</h3>
-                    <ul>
-                        <li>System containers vs. application containers</li>
-                        <li>LXC</li>
-                        <li>OpenVZ</li>
-                        <li>Namespaces and cgroups were written for system containers</li>
-                        <li>Unified Kernel API</li>
-                        <li>Docker came along and stole the thunder</li>
-                        <li>Layers (UnionFS) and workflow</li>
-                    </ul>
-                </section>
-                <section>
-                    <h3>LXC/LXD</h3>
-                    <ul>
-                        <li>Written to be a drop-in replacement for KVM</li>
-                        <li>10x increase in number of instances on the same hardware</li>
-                        <li>Faster to start all instances</li>
-                        <li>Better disk and network IO (up to 40%)</li>
-                        <li>Security ...</li>
-                    </ul>
-                </section>
-                </section>
-
-                 <!-- Summing up -->
-                <section>
-                <section>
-                    <h3>Summing up</h3>
-                    <ul>
-                        <li>Deep integration required particularity for networking and volumes</li>
-                        <li>Running containers in VMs is common but not ideal for performance</li>
-                        <li>People are running containers in VMs due to security concerns</li>
-                        <li>Original container use cases are still valid and interesting (see LXC/LXD)</li>
-                        <li>Orthogonal concerns (application vs machine abstractions) can make for difficult fit</li>
-                        <li>So many ways to orchestrate things, expect consolidation</li>
-                    </ul>
-                </section>
-                <section>
-                    <h3>Future</h3>
-                    <ul>
-                        <li>Native multi tenanting in Kubernetes?</li>
-                        <li>Containers running on bare metal kernels not VM kernels</li>
-                        <li>Persistent volumes backed by Block Storage (eg Rexray)</li>
-                        <li>Deep integration using the integration bridge approach (eg Kuryr)</li>
-                        <li>https://github.com/emccode/rexray</li>
-                    </ul>
-                </section>
-                <section>
-                    <h3>Application catalogues and stack builders</h3>
-                    <ul>
-                        <li>Application Catalogue</li>
-                        <li>Heat</li>
-                        <li>Murano</li>
-                        <li>Juju</li>
-                        <li>Docker Hub</li>
-                        <li>Overlapping functionlity</li>
-                        <li>Expect consolidation</li>
-                    </ul>
-                </section>
-                <section>
-                    <h3>Questions?</h3>
                 </section>
                 </section>
 
