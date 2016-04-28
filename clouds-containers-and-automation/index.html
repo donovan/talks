@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Containers and Openstack</title>
+
+        <meta name="author" content="Catalyst">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/catalyst.css" id="theme">
+        <link rel="stylesheet" href="css/font-awesome.css">
+
+        <!-- For syntax highlighting -->
+        <!-- <link rel="stylesheet" href="lib/css/zenburn.css"> -->
+        <link rel="stylesheet" href="lib/css/catalyst-syntax.css">
+
+        <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+        <script>
+            if( window.location.search.match( /print-pdf/gi ) ) {
+                var link = document.createElement( 'link' );
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+                document.getElementsByTagName( 'head' )[0].appendChild( link );
+            }
+        </script>
+
+        <style>
+            /* Add the ability to omit slides from the printed version (has to be after the print include)*/
+            @media print {
+                .reveal .slides section.no-print {
+                    display: none !important;
+                    visibility: hidden !important;
+                }
+            }
+        </style>
+        <style>
+            .reveal h1, .reveal h2, .reveal h3 {
+                color: #ba2025;
+            }
+        </style>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <!-- Please put any custom styles here -->
+        <style>
+
+        </style>
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <!-- Cover slide -->
+                <section>
+                    <h1 class="catalyst-logo">Catalyst</h1>
+                    <h3>Clouds, Containers and Automation</h3>
+                    <p class="small-text">
+                        Presented by <a href="#">Donovan Jones</a>
+                    </p>
+                </section>
+
+                <section>
+                <section>
+                    <h3>Why Automate?</h3>
+                    <p>Automation is the key to speed, consistency, scalability and repeatability.</p>
+                    <p>Automation is about taking manual processes and placing technology around them to make them repeatable.</p>
+                </section>
+                <section>
+                    <h3>Why Automate?</h3>
+                    <ul>
+                        <li>Scalability</li>
+                        <li>Reliability</li>
+                        <li>Duplication</li>
+                        <li>Consistency</li>
+                        <li>Auditability</li>
+                        <li>Security</li>
+                    </ul>
+                </section>
+                </section>
+
+                <section>
+                <section>
+                    <h3>What does Automation enable?</h3>
+                </section>
+                <section>
+                    <h3>Why Automate?</h3>
+                    <ul>
+                        <li>Immutable Infrastructure</li>
+                        <li>Continious Integration</li>
+                        <li>Continious Deployment</li>
+                        <li>MTTR vs. MTBF</li>
+                        <li>A key DevOps practice</li>
+                        <li>Essential to Microservice deployment at scale</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Immutable Infrastructure</h3>
+                    <ul>
+                        <li><a href="https://blog.engineyard.com/2014/pets-vs-cattle">Cattle vs pets</a></li>
+                        <li><a href="http://martinfowler.com/bliki/SnowflakeServer.html">Snowflake Servers</a> vs. <a href="http://martinfowler.com/bliki/PhoenixServer.html">Phoenix Servers</a></li>
+                        <li>The environment is defined in code (Infrastructure as Code)</li>
+                        <li>If you need to change _anything_ you create a new instance and destroy the old one</li>
+                        <li>Practice failure and iterate</li>
+                        <li>Declarative</li>
+                    </ul>
+                </section>
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>Immutable Architecture</h2>
+                    <img src="http://s.radar.oreilly.com/wp-files/2/2015/06/immutable_infrastructure.gif" alt="Immutable Architecture" height="600" width="800">
+                </section>
+                <section>
+                    <h3>Continuous delivery</h3>
+                    <ul>
+                        <li>Automated Pipeline from developer commit to production deploy</li>
+                        <li>Requires Continuous Integration where every commit triggers all the tests</li>
+                        <li>Requires lots of tests</li>
+                        <li>Deploying more frequently lowers risk</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Continuous delivery antipatterns</h3>
+                    <ul>
+                        <li>Deploying software manually</li>
+                        <li>Manual configuration of production environments</li>
+                        <li>Deploying to a production-like environment only after development is complete</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>MTTR vs. MTBF</h3>
+                    <ul>
+                        <li>MTTR = Mean Time To Repair</li>
+                        <li>MTBF = Mean Time Between Failures</li>
+                        <li>MTTD = Mean Time To Detection</li>
+                        <li>A low MTTR requires a low MTTD</li>
+                        <li>A low MTTR requires Automation</li>
+                        <li>A low MTTD requires a good Monitoring</li>
+                    </ul>
+                </section>
+                <section class="image-slide">
+                    <h2>MTTR vs. MTBF</h2>
+                    <img src="http://www.kitchensoap.com/wp-content/uploads/2010/11/Screen-shot-2010-11-07-at-1.08.39-PM.png" alt="MTTR vs. MTBF" height="600" width="800">
+                </section>
+                <section class="image-slide">
+                    <h2>DevOps</h2>
+                    <img src="http://techbeacon.com/sites/default/files/picture1_1.png" alt="DevOps" height="496" width="634">
+                </section>
+                <section class="image-slide">
+                    <h2>DevOps</h2>
+                    <img src="https://image.slidesharecdn.com/devopscommonusecasesarchitecturesbestpractices-150529001048-lva1-app6892/95/devops-common-use-cases-architectures-best-practices-22-638.jpg?cb=1432858606" alt="DevOps" height="359" width="638">
+                </section>
+                </section>
+
+                <section>
+                <section>
+                    <h3>Types of Automation</h3>
+                    <ul>
+                        <li>Provisioning</li>
+                        <li>Configuration Management</li>
+                        <li>Application Deployment</li>
+                        <li>Security &amp; Compliance</li>
+                        <li>Orchestration</li>
+                        <li>Container Orchestration Engines</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Provisioning</h3>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Provisioning</h3>
+                    <ul>
+                        <li>Red Hat Kickstart</li>
+                        <li><a href="http://fai-project.org/">FAI</a></li>
+                        <li>Debian Preseed</li>
+                        <li>Cobbler</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Configuration Management</h3>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Configuration Management</h3>
+                    <ul>
+                        <li><a href="https://saltstack.com/">Salt</a></li>
+                        <li><a href="https://puppetlabs.com/">Puppet</a></li>
+                        <li><a href="https://www.chef.io/">Chef</a></li>
+                        <li><a href="https://www.ansible.com/">Ansible</a></li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Application Deployment</h3>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Application Deployment</h3>
+                    <ul>
+                        <li><a href="http://www.fabfile.org/">Fabric</a></li>
+                        <li><a href="http://capistranorb.com/">Capistrano</a></li>
+                        <li><a href="https://www.ansible.com/">Ansible</a></li>
+                        <li><a href="https://www.thoughtworks.com/go/">GoCD</a></li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Orchestration</h3>
+                    <ul>
+                        <li>Build the entire stack (networks, routers, security groups, instances etc.)</li>
+                        <li>Some tools are cross cloud (ansible, terraform)</li>
+                        <li>Higher level than configuration management on individual instances</li>
+                        <li>Orchestration of other services (DNS,CDN,LB etc.)</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Orchestration</h3>
+                    <ul>
+                        <li><a href="https://aws.amazon.com/cloudformation/">AWS CloudFormation</a></li>
+                        <li><a href="https://wiki.openstack.org/wiki/Heat">OpenStack Heat</a></li>
+                        <li><a href="https://www.ansible.com/">Ansible</a></li>
+                        <li><a href="https://www.redhat.com/en/technologies/cloud-computing/cloudforms">Red Hat CloudForms</a></li>
+                        <li><a href="https://www.terraform.io/">Hashicorp Terraform</a></li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Security &amp; Compliance</h3>
+                    <ul>
+                        <li>Test Driven Infrastructure</li>
+                        <li>Regression testing of secuirty issues</li>
+                        <li>PCI or government security standard compliance</li>
+                        <li>Security patching</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Security &amp; Compliance</h3>
+                    <ul>
+                        <li>Chef Inspec</li>
+                        <li>Goss (go)</li>
+                        <li>testinfra (python)</li>
+                        <li><a href="http://serverspec.org/">Serverspec</a> (ruby)</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Container Orchestration Engines</h3>
+                    <ul>
+                        <li>Provide a control plane or operating system on which to run containerised workloads</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Container Orchestration Engines</h3>
+                    <p>"Kubernetes is an open-source system for automating deployment, operations, and scaling of containerized applications."</p>
+                </section>
+                <section>
+                    <h3>Container Orchestration Engines</h3>
+                    <ul>
+                        <li>Kubernetes</li>
+                        <li>Docker Swarm</li>
+                        <li>Apache Mesos / DCOS</li>
+                    </ul>
+                </section>
+                </section>
+
+                 <!-- What is Openstack? -->
+                <section>
+                <section>
+                    <h3>What does this mean for you?</h3>
+                    <p>IaaS</p>
+                    <p>Elastic computing resources</p>
+                    <p>Open Source project for building public and private clouds</p>
+                    <p>The only real option for building a stack to compete with AWS (Azure, GCE)</p>
+                    <p>Python</p>
+                </section>
+                <section>
+                    <h3>What about Windows?</h3>
+                    <ul>
+                        <li>Traditional Windows Server Adminstaration is enforced Snowflake (point and click)</li>
+                        <li>Modern Windows Server Adminstaration looks more and more like linux</li>
+                        <li>Windows Server Core</li>
+                        <li>WSL (ubuntu bash on windows)</li>
+                        <li>Powershell (used by Ansible for windows)</li>
+                        <li>Docker on Windows</li>
+                        <li>SSHD on windows</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>What about Networking?</h3>
+                    <ul>
+                        <li>SDN</li>
+                        <li>NFV</li>
+                        <li>Ansible network modules</li>
+                        <li>WSL (ubuntu bash on windows)</li>
+                        <li>Powershell (used by Ansible for windows)</li>
+                        <li>Docker on Windows</li>
+                        <li>SSHD on windows</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Optional Services</h3>
+                    <ul>
+                        <li>Dashboard (Horizon)</li>
+                        <li>Telemetry Service (Celiometer)</li>
+                        <li>Orchestration Service (Heat)</li>
+                        <li>Designate (DNS)</li>
+                        <li>Ironic (Bare-Metal Provisioning)</li>
+                        <li>And many more ..</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Services</h3>
+                    <ul>
+                        <li>Mix and match</li>
+                        <li>Operators can choose which services they wish to use</li>
+                        <li>Big Tent</li>
+                        <li>Projects scored by Adoption, Maturity and Age</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Why containers?</h3>
+                    <ul>
+                        <li>Unified control pane for running "workloads"</li>
+                        <li>VMs, Containers and Bare Metal</li>
+                        <li>Challenge of integrating a somewhat orthogonal architecture</li>
+                        <li>Ephemeral applications vs. long lived machines</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Container projects</h3>
+                    <ul>
+                        <li>Magnum - Containers as a Service</li>
+                        <li>Kolla - Containers and deployment tools for operating OpenStack clouds</li>
+                        <li>Nova docker driver</li>
+                    </ul>
+                </section>
+                </section>
+
+                 <!-- The summit -->
+                <section>
+                <section>
+                    <h3>The summit</h3>
+                    <ul>
+                        <li>Huge!</li>
+                        <li>Every 6 months</li>
+                        <li>Lots of big players (Cisco, HP, Intel, Red Hat, IBM, Canonical, VMware, EMC)</li>
+                        <li>Design summit and regular summit</li>
+                        <li>~6000 people</li>
+                        <li>14 Streams!</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Users</h3>
+                    <ul>
+                        <li>NTT</li>
+                        <li>Yahoo Japan</li>
+                        <li>NEC</li>
+                        <li>SK Telecom</li>
+                        <li>Huawei</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Buzzword bingo</h3>
+                    <ul>
+                        <li>Containers!</li>
+                        <li>SDN</li>
+                        <li>NFV</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Why me?</h3>
+                    <ul>
+                        <li>Catalyst Cloud</li>
+                        <li>Documentation, Training</li>
+                    </ul>
+                </section>
+                </section>
+
+                 <!-- Running Containers in OpenStack -->
+                <section>
+                <section>
+                    <h3>Running Containers in OpenStack - Roll your own</h3>
+                    <ul>
+                        <li>Roll your own</li>
+                        <li>Setup the LDK stack on compute</li>
+                        <li>eg: Docker Machine works well now</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Running Containers in OpenStack - Magnum</h3>
+                    <ul>
+                        <li>Sets up a Container Orchestration Engine within an Openstack tenant</li>
+                        <li>Exposes native COE API</li>
+                        <li>Production ready (ish)</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Magnum - Container Orchestration Engines</h3>
+                    <ul>
+                        <li>Kubernetes (most mature)</li>
+                        <li>Swarm</li>
+                        <li>Apache Mesos</li>
+                    </ul>
+                </section>
+                <section class="image-slide">
+                    <h3>Magnum Architecture</h3>
+                    <img src="img/800px-Magnum_architecture.png" alt="Magnum Architecture">
+                </section>
+                <section>
+                    <h3>Kuryr</h3>
+                    <ul>
+                        <li>Maps Docker libnetwork to Neutron API</li>
+                        <li>Avoids multiple overlay networks</li>
+                    </ul>
+                </section>
+                <section class="image-slide">
+                    <h3>Kuryr</h3>
+                    <img src="img/kuryr.jpg" alt="Kuryr">
+                </section>
+                </section>
+
+                 <!-- Managing state -->
+                <section>
+                <section>
+                    <h3>Managing State</h3>
+                    <p>"In a cluster of ephemeral containers application state must exist outside of the containers."</p>
+                    <p>Ian Lewis, Google - <a href="https://speakerdeck.com/ianlewis/in-a-world-of-ephemeral-containers-how-do-we-keep-track-of-things-at-openstack-summit-tokyo">In a World of Ephemeral Containers, How Do We Keep Track of Things? @ OpenStack Summit Tokyo</a> (<a href="https://www.youtube.com/watch?v=aYs7IxMQzgg">video</a>)</p>
+                </section>
+                <section>
+                    <h3>What exactly is state?</h3>
+                    <ul>
+                        <li>Our Database!</li>
+                        <li>Filesystem (volumes)</li>
+                        <li>Configuration (service discovery)</li>
+                        <li>Secrets</li>
+                        <li>Source Code?</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Patterns for Managing State</h3>
+                    <ul>
+                        <li>Outside the cluster (SEP)</li>
+                        <li>Adapted to run in cluster (eg MySQL inside cluster)</li>
+                        <li>Cluster native (eg Cassandra or Riak)</li>
+                        <li><a href="http://vitess.io/">vitess.io</a></li>
+                    </ul>
+                </section>
+                </section>
+
+                 <!-- System Containers -->
+                <section>
+                <section>
+                    <h3>System Containers</h3>
+                    <ul>
+                        <li>System containers vs. application containers</li>
+                        <li>LXC</li>
+                        <li>OpenVZ</li>
+                        <li>Namespaces and cgroups were written for system containers</li>
+                        <li>Unified Kernel API</li>
+                        <li>Docker came along and stole the thunder</li>
+                        <li>Layers (UnionFS) and workflow</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>LXC/LXD</h3>
+                    <ul>
+                        <li>Written to be a drop-in replacement for KVM</li>
+                        <li>10x increase in number of instances on the same hardware</li>
+                        <li>Faster to start all instances</li>
+                        <li>Better disk and network IO (up to 40%)</li>
+                        <li>Security ...</li>
+                    </ul>
+                </section>
+                </section>
+
+                 <!-- Summing up -->
+                <section>
+                <section>
+                    <h3>Summing up</h3>
+                    <ul>
+                        <li>Deep integration required particularity for networking and volumes</li>
+                        <li>Running containers in VMs is common but not ideal for performance</li>
+                        <li>People are running containers in VMs due to security concerns</li>
+                        <li>Original container use cases are still valid and interesting (see LXC/LXD)</li>
+                        <li>Orthogonal concerns (application vs machine abstractions) can make for difficult fit</li>
+                        <li>So many ways to orchestrate things, expect consolidation</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Future</h3>
+                    <ul>
+                        <li>Native multi tenanting in Kubernetes?</li>
+                        <li>Containers running on bare metal kernels not VM kernels</li>
+                        <li>Persistent volumes backed by Block Storage (eg Rexray)</li>
+                        <li>Deep integration using the integration bridge approach (eg Kuryr)</li>
+                        <li>https://github.com/emccode/rexray</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Application catalogues and stack builders</h3>
+                    <ul>
+                        <li>Application Catalogue</li>
+                        <li>Heat</li>
+                        <li>Murano</li>
+                        <li>Juju</li>
+                        <li>Docker Hub</li>
+                        <li>Overlapping functionlity</li>
+                        <li>Expect consolidation</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Questions?</h3>
+                </section>
+                </section>
+
+
+        </div>
+
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Parallax scrolling
+                // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+                // parallaxBackgroundSize: '2100px 900px',
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
