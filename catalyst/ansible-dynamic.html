@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Ansible in the Cloud</title>
+
+        <meta name="author" content="Catalyst">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/catalyst.css" id="theme">
+
+        <!-- For syntax highlighting -->
+        <!-- <link rel="stylesheet" href="lib/css/zenburn.css"> -->
+        <link rel="stylesheet" href="lib/css/catalyst-syntax.css">
+
+        <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+        <script>
+            if( window.location.search.match( /print-pdf/gi ) ) {
+                var link = document.createElement( 'link' );
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+                document.getElementsByTagName( 'head' )[0].appendChild( link );
+            }
+        </script>
+
+        <style>
+            /* Add the ability to omit slides from the printed version (has to be after the print include)*/
+            @media print {
+                .reveal .slides section.no-print {
+                    display: none !important;
+                    visibility: hidden !important;
+                }
+            }
+        </style>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <!-- Please put any custom styles here -->
+        <style>
+
+        </style>
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <!-- Cover slide -->
+                <section>
+                    <h3>Ansible in the Cloud - dynamic inventories</h3>
+                    <h1 class="catalyst-logo">Catalyst</h1>
+                    <p class="small-text">
+                        Presented by <a href="#">Donovan Jones</a>
+                    </p>
+                </section>
+
+                <!-- Ansible basics -->
+                <section>
+                <section>
+                    <h3>The basics</h3>
+                        <ul>
+                            <li>SSH to a host or list of hosts (group) and execute commands</li>
+                            <li>Inventories: a list of hosts</li>
+                                <ul>
+                                    <li>/etc/ansible/hosts</li>
+                                </ul>
+                            <li>ansible vs. ansible-playbook</li>
+                                <ul>
+                                    <li>ad hoc commands (cssh style)</li>
+                                    <li>commands in a playbook</li>
+                                </ul>
+                            </li>
+                        </ul>
+                </section>
+                <section>
+                    <h3>Playbooks</h3>
+                        <ul>
+                            <li>Playbooks</li>
+                            <ul>
+                                <li>Plays</li>
+                                <ul>
+                                    <li>Hosts</li>
+                                    <li>Roles</li>
+                                    <li>Tasks</li>
+                                    <li>Handlers</li>
+                                </ul>
+                            </ul>
+                        </ul>
+                </section>
+                </section>
+
+                <!-- The cloud -->
+                <section>
+                <section>
+                    <h3>What is Cloud Computing?</h3>
+                    <p>The NIST Definition of Cloud Computing lists five essential characteristics of Cloud Computing:</p>
+                    <ul>
+                        <li>On-demand self-service</li>
+                        <li>Broad network access</li>
+                        <li>Resource pooling</li>
+                        <li>Rapid elasticity</li>
+                        <li>Measured service</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>What is OpenStack?</h3>
+                    <ul>
+                        <li>An Open Source AWS</li>
+                        <li>A "cloud operating system"</li>
+                        <li>Sits above your infrastructure</li>
+                        <li>Provides an API to interact with that infrastructure</li>
+                        <li>API provides operations like Create/Delete/Update for various components</li>
+                        <li>Command line tools, libraries, dashboard all interact with services via the API</li>
+                    </ul>
+                </section>
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>What is OpenStack?</h2>
+                    <img src="../img/Openstack-software-diagram.png" alt="Openstack-software-diagram">
+                </section>
+                <section>
+                    <h3>OpenStack Services</h3>
+                    <ul>
+                        <li>Dashboard (Horizon)</li>
+                        <li>Compute (Nova)</li>
+                        <li>Networking (Neutron)</li>
+                        <li>Object Storage (Swift)</li>
+                        <li>Block Storage (Cinder)</li>
+                        <li>Identity Service (Keystone)</li>
+                        <li>Image Service (Glance)</li>
+                        <li>Telemetry Service (Ceilometer)</li>
+                        <li>Orchestration Service (Heat)</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>OpenStack Workloads</h3>
+                    <ul>
+                        <li>Big Data / Science / HPC</li>
+                        <li>Public Cloud</li>
+                        <li>Private Cloud</li>
+                        <li>Telco SDN / NFV</li>
+                    </ul>
+                </section>
+                </section>
+
+                <!-- Ansible beyond-configuration-management -->
+                <section>
+                <section>
+                    <h3>Ansible: Beyond Configuration Management</h3>
+                    <p><a href="https://www.ansible.com/blog/2013/11/29/ansibles-architecture-beyond-configuration-management">https://www.ansible.com/blog/2013/11/29/ansibles-architecture-beyond-configuration-management</a></p>
+                    <p><a href="https://www.ansible.com/how-ansible-works">https://www.ansible.com/how-ansible-works</a></p>
+                </section>
+                <section>
+                        <h3>Blockquote</h3>
+                        <blockquote class="quotation-marks">
+                        Ansible is a radically simple IT automation engine that automates cloud provisioning, configuration management, application deployment, intra-service orchestration, and many other IT needs.
+                        </blockquote>
+                    </section>
+                <section>
+                    <h3>Ansible: Beyond Configuration Management</h3>
+                    <ul>
+                        <li>Combine the best of imperative and declarative</li>
+                        <li>Imperative from application deployment systems</li>
+                        <li>Declarative from configuration management systems</li>
+                        <li>Hybrid approach</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Ansible: Batteries Included</h3>
+                    <ul>
+                        <li>Provisioning</li>
+                        <li>Configuration Management</li>
+                        <li>Application Deployment</li>
+                        <li>Security &amp; Compliance</li>
+                        <li>Orchestration</li>
+                    </ul>
+                </section>
+                </section>
+
+                <!-- Ansible in the cloud -->
+                <section>
+                <section>
+                    <h3>Cloud Modules</h3>
+                    <p><a href="https://docs.ansible.com/ansible/list_of_cloud_modules.html">https://docs.ansible.com/ansible/list_of_cloud_modules.html</a></p>
+                </section>
+                <section>
+                    <h3>Cloud Modules</h3>
+                        <ul>
+                            <li>Amazon (64)</li>
+                            <li>Azure (2)</li>
+                            <li>Centurylink (13)</li>
+                            <li>Cloudstack (32)</li>
+                            <li>Digital Ocean (3)</li>
+                            <li>Docker (3)</li>
+                            <li>Google (7)</li>
+                            <li>Linode (1)</li>
+                        </ul>
+                </section>
+                <section>
+                    <h3>Cloud Modules</h3>
+                        <ul>
+                            <li>Lxc (1)</li>
+                            <li>Misc (6)</li>
+                            <li>Openstack (50)</li>
+                            <li>Profitbricks (5)</li>
+                            <li>Rackspace (29)</li>
+                            <li>Softlayer (1)</li>
+                            <li>Vmware (26)</li>
+                            <li>Webfaction (8)</li>
+                        </ul>
+                </section>
+                <section>
+                    <h3>Localhost?</h3>
+                    <ul>
+                        <li>Cloud modules are localhost tasks</li>
+                        <li>Tasks map to modules</li>
+                        <li>Modules make API calls in the background</li>
+                        <li>Openstack modules use shade</li>
+                    </ul>
+                </section>
+                </section>
+
+                <!-- Compare with Terraform-->
+                <section>
+                <section>
+                    <h3>Terraform</h3>
+                        <ul>
+                            <li>Hashicorp project</li>
+                            <li>plan, graph and apply</li>
+                            <li>Providers and provisioners</li>
+                            <li>Does not do complex provisioning itself</li>
+                        </ul>
+                </section>
+                <section>
+                    <h3>Terraform Use Cases</h3>
+                        <ul>
+                            <li>Heroku App Setup</li>
+                            <li>Multi-Tier Applications</li>
+                            <li>Self-Service Clusters</li>
+                            <li>Software Demos</li>
+                            <li>Disposable Environments</li>
+                            <li>Software Defined Networking</li>
+                            <li>Resource Schedulers</li>
+                            <li>Multi-Cloud Deployment</li>
+                        </ul>
+                </section>
+                <section>
+                    <h3>Terraform Provisioners</h3>
+                        <ul>
+                            <li>chef</li>
+                            <li>connection</li>
+                            <li>file</li>
+                            <li>local-exec</li>
+                            <li>remote-exec</li>
+                            <li>null_resource</li>
+                        </ul>
+                </section>
+                <section>
+                    <h3>Cf. Ansible</h3>
+                    <ul>
+                        <li>Terraform vs. page does not mention Ansible ...</li>
+                        <li>Focus on providers not provisioners</li>
+                        <li>No localhost!</li>
+                        <li>Similar style of configuration</li>
+                        <li>Similar style execution</li>
+                        <li>Terraform + Chef == Ansible?</li>
+                    </ul>
+                </section>
+                </section>
+
+                <!-- Dynamic Inventories -->
+                <section>
+                    <section>
+                        <h3>Playbook Best Practices</h3>
+                        <blockquote class="quotation-marks">
+                     If you are using a cloud provider, you should not be managing your inventory in a static file. This does not just apply to clouds – If you have another system maintaining a canonical list of systems in your infrastructure, usage of dynamic inventory is a great idea in general.
+                        </blockquote>
+                    </section>
+                    <section>
+                        <h3>Dynamic Inventories</h3>
+                        <ul>
+                            <li><a href="https://docs.ansible.com/ansible/intro_dynamic_inventory.html">Documentation</a></li>
+                            <li><a href="https://docs.ansible.com/ansible/developing_inventory.html">Developing Inventories</a></li>
+                            <li><a href="http://docs.catalystcloud.io/tutorials/ansible-openstack-dynamic-inventory.html">Openstack example</a></li>
+                            <li><a href="http://docs.catalystcloud.io/tutorials/ansible-create-x-servers-using-in-memory-inventory.html">Updating an inventory from within a playbook</a></li>
+                        </ul>
+                    </section>
+                </section>
+
+                <!-- Section title slide with big colour dot -->
+                <section class="title-slide">
+                    <h2 class="orange">Title goes here</h2>
+                </section>
+
+                <!-- Slide with a large title -->
+                <section>
+                    <h2>Large title</h2>
+                    <aside class="notes">
+                        This will only display in the notes window.
+                    </aside>
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h3>Title</h3>
+                    <img src="img/800x400.gif" alt="">
+                </section>
+
+                <!-- Slide with list items (list items are displayed at once) -->
+                <section>
+                    <h3>List title</h3>
+                    <ul>
+                        <li>List item <img class="img-right" src="img/300x400.gif" alt="Placeholder image"></li>
+                        <li>List item</li>
+                        <li>List item</li>
+                    </ul>
+                </section>
+
+                <!-- Slide with list items (fragmented list items) -->
+                <section>
+                    <h3>Fragmented list</h3>
+                    <ul>
+                        <li class="fragment">List item</li>
+                        <li class="fragment">List item</li>
+                        <li class="fragment">List item <img class="img-centered" src="img/500x200.gif" alt="Placeholder image"></li>
+                    </ul>
+                </section>
+
+                <!-- Slide with vertical slides underneath  -->
+                <section>
+                    <!-- Horizontal slide (This is one the same level as slide above) -->
+                    <section class="title-slide banner-3">
+                        <h2 class="yellow">Title (press down to see vertical slides)</h2>
+                    </section>
+
+                    <!-- The following slides are vertical, use down arrow key to navigate -->
+                    <!-- Centered paragraph  -->
+                    <section>
+                        <h3>Paragraph</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at scelerisque eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam placerat posuere nibh vel dapibus.</p>
+                    </section>
+
+                    <!-- Blockquote  -->
+                    <section>
+                        <h3>Blockquote</h3>
+                        <blockquote class="quotation-marks">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at scelerisque eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam placerat posuere nibh vel dapibus.
+                        </blockquote>
+                    </section>
+
+                    <!-- Nested lists-->
+                    <section>
+                        <h3>Nested lists</h3>
+                            <ul>
+                                <li>One</li>
+                                <li>Two</li>
+                                <li>Three</li>
+                                    <ul>
+                                        <li>Nested One</li>
+                                        <li>Nested Two</li>
+                                    </ul>
+                            </ul>
+                    </section>
+                </section>
+
+                <!-- Slide with code block -->
+                <section>
+                    <h3>Title</h3>
+                    <p>Some text</p>
+                    <pre><code data-trim contenteditable>
+function linkify( selector ) {
+    if( supports3DTransforms ) {
+
+        var nodes = document.querySelectorAll( selector );
+
+        for( var i = 0, len = nodes.length; i < len; i++ ) {
+            var node = nodes[i];
+
+            if( !node.className ) {
+                node.className += ' roll';
+            }
+        }
+    }
+}
+                    </code></pre>
+                </section>
+
+                <!-- Slide with full background image -->
+                <section data-background="img/800x600.gif">
+                    <h3>Image backgrounds</h3>
+                </section>
+
+                <!-- Slide with Catalyst slogan -->
+                <section class="image-slide">
+                    <img class="cat-slogan-image" src="css/theme/images/freedom-to-innovate.svg" alt="freedom to innovate">
+                </section>
+            </div>
+
+            <div class="footer">
+                <div class="scarf">
+                    <div class="scarf-orange"></div>
+                    <div class="scarf-yellow"></div>
+                    <div class="scarf-blue"></div>
+                    <div class="scarf-green"></div>
+                </div>
+                <div class="footer-inner">
+                    <div class="catalyst-logo-footer">Catalyst</div>
+                    <!-- NOTE: use only one of these. open-source-technologists is the standard -->
+                    <div class="open-source-technologists">open source technologists</div>
+                    <!-- <div class="freedom-to-innovate">freedom to innovate</div> -->
+                </div>
+            </div>
+        </div>
+
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Parallax scrolling
+                // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+                // parallaxBackgroundSize: '2100px 900px',
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
