@@ -39,9 +39,24 @@ containerisation technologies within OpenStack.
 ### Presented at:
 * [Wellington Docker Meetup] on 2015-12-08
 
+## clouds-containers-and-automation/
+A talk that looks at Automation in the IT industry and where its heading.
+
+### Presented at:
+* [New Zealand Computer Science Research Student Conference] on 2016-04-29
+
+## ansible-in-the-cloud/
+A talk that looks at approaches to using Ansible effectively in cloud
+environments.
+
+### Presented at:
+* [Wellington Ansible Meetup] on 2016-05-24
+
   [Wellington Docker Meetup]: http://www.meetup.com/Docker-Wellington/
   [Summer of Tech lunchtime presentation]: http://www.summeroftech.co.nz/
   [Wellington Python Meetup]: http://www.meetup.com/NZPUG-Wellington/
   [Wellington Perlmongers]: http://wellington.pm.org/
   [Catalyst IT Pizza Thursday]: http://www.catalyst.net.nz/
   [Distributed Developer's Stack]: http://sites.oreilly.com/odewahn/dds-field-guide/
+  [New Zealand Computer Science Research Student Conference]: https://ecs.victoria.ac.nz/Events/NZCSRSC2016/
+  [Wellington Ansible Meetup]: http://www.meetup.com/Ansible-New-Zealand/
