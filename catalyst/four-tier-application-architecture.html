@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Ansible in the Cloud</title>
+
+        <meta name="author" content="Catalyst">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/catalyst.css" id="theme">
+
+        <!-- For syntax highlighting -->
+        <!-- <link rel="stylesheet" href="lib/css/zenburn.css"> -->
+        <link rel="stylesheet" href="lib/css/catalyst-syntax.css">
+
+        <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+        <script>
+            if( window.location.search.match( /print-pdf/gi ) ) {
+                var link = document.createElement( 'link' );
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+                document.getElementsByTagName( 'head' )[0].appendChild( link );
+            }
+        </script>
+
+        <style>
+            /* Add the ability to omit slides from the printed version (has to be after the print include)*/
+            @media print {
+                .reveal .slides section.no-print {
+                    display: none !important;
+                    visibility: hidden !important;
+                }
+            }
+        </style>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <!-- Please put any custom styles here -->
+        <style>
+
+        </style>
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <!-- Cover slide -->
+                <section>
+                    <h3>The journey to a four tier application architecture and what
+                      to do when you get there.</h3>
+                    <h1 class="catalyst-logo">Catalyst</h1>
+                    <p class="small-text">
+                        Presented by <a href="#">Donovan Jones</a>
+                    </p>
+                </section>
+
+                <!-- What is the Four-Tier Application Architecture -->
+                <section>
+                <section>
+                    <h3>What is the Three-Tier Architecture?</h3>
+                    <ol>
+                        <li>Presentation Tier</li>
+                        <li>Application Tier</li>
+                        <li>Data Tier</li>
+                    </ol>
+                </section>
+                <section>
+                    <h3>What is the Three-Tier Architecture?</h3>
+                    <ol>
+                        <li>Presentation Tier - A web browser on a workstation</li>
+                        <li>Application Tier - The business logic expressed as code</li>
+                        <li>Data Tier - A relational database</li>
+                    </ol>
+                </section>
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>The Three-Tier Architecture</h2>
+                    <img src="../img/400px-Overview_of_a_three-tier_application_vectorVersion.svg.png" alt="Three-Tier Architecture">
+                </section>
+                <section>
+                    <h3>What is the Four-Tier Application Architecture?</h3>
+                    <p>Is the Three-Tier Architecture still useful? A blog post from Ted Schadler at Forrester Research suggests a new architecture described as “The Four-Tier Engagement Platform”.</p>
+                </section>
+                <section>
+                    <h3>What is the Four-Tier Application Architecture?</h3>
+                    <ul>
+                        <li>Client Tier</li>
+                        <li>Delivery Tier</li>
+                        <li>Aggregation Tier</li>
+                        <li>Services Tier</li>
+                    </ul>
+                </section>
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>The Four-Tier Application Architecture</h2>
+                    <img src="../img/engagement_platform_2.png" alt="The Four-Tier Application Architecture">
+                </section>
+                </section>
+
+                <!-- Client Tier -->
+                <section>
+                <section>
+                    <h3>Client Tier</h3>
+                    <ol>
+                        <li>Mobile clients (native and responsive html)</li>
+                        <li>Web clients (mobile and desktop)</li>
+                        <li>Other clients (IOT etc.)</li>
+                        <li>Responsible for experience delivery</li>
+                    </ol>
+                </section>
+                <section>
+                    <h3>Client Tier Features</h3>
+                    <ol>
+                        <li>Decoupled client and backend</li>
+                        <li>Backend supports different clients</li>
+                        <li>Single-page Applications</li>
+                        <li>Responsive</li>
+                        <li>Consumes services</li>
+                    </ol>
+                </section>
+                <section>
+                    <h3>Client Tier Drivers</h3>
+                    <ol>
+                        <li>Regular refreshes of frontend components</li>
+                        <li>TODO</li>
+                    </ol>
+                </section>
+                <section>
+                    <h3>Client Tier Issues</h3>
+                    <ol>
+                        <li>Javascript stratigraphy</li>
+                        <li>Javascript mediated SEO</li>
+                    </ol>
+                </section>
+                </section>
+
+
+                <!-- Delivery Tier -->
+                <section>
+                <section>
+                    <h3>Delivery Tier</h3>
+                    <ol>
+                        <li>Optimizes content for proper display on device</li>
+                        <li>Caches content for performant delivery</li>
+                    </ol>
+                </section>
+                <section>
+                    <h3>Delivery Tier Features</h3>
+                    <ol>
+                        <li>Fine grained cache control</li>
+                        <li>Anycasting</li>
+                        <li>Large number of global POPs</li>
+                        <li>NZ POPs</li>
+                        <li>New HTTP and SSL Features</li>
+                        <li>WAF</li>
+                    </ol>
+                </section>
+                <section>
+                    <h3>Delivery Tier Drivers</h3>
+                    <ol>
+                        <li>DDoS</li>
+                        <li>Better latency</li>
+                        <li>Performance globally</li>
+                        <li>Performance optimisation</li>
+                        <li>Outsource client facing infrastructure challenges</li>
+                    </ol>
+                </section>
+                <section>
+                    <h3>Delivery Tier Issues</h3>
+                    <ol>
+                        <li>Its a proxy!</li>
+                        <li>Its not under your control</li>
+                        <li>Its hard to build yourself</li>
+                        <li>Complexity (Routing, BGP, DNS etc.)</li>
+                        <li>The boundary of your service is global</li>
+                        <li>Peering</li>
+                        <li>Worse latency</li>
+                    </ol>
+                </section>
+                </section>
+
+                <!-- Aggregation Tier -->
+                <section>
+                <section>
+                    <h3>Aggregation Tier</h3>
+                    <ol>
+                        <li>Aggregates and federates services tier</li>
+                        <li>Provides discovery for underlying services</li>
+                        <li>Performs data protocol translation</li>
+                    </ol>
+                </section>
+                <section>
+                    <h3>Aggregation Tier Features</h3>
+                    <ol>
+                        <li>Authentication</li>
+                        <li>SSL Termination</li>
+                        <li>Load Balancing</li>
+                        <li>ACLS, CORS, Rate limiting</li>
+                        <li>Analytics, Monitoring and Logging</li>
+                        <li>Transformation</li>
+                    </ol>
+                </section>
+                <section>
+                    <h3>Aggregation Tier Drivers</h3>
+                    <ol>
+                        <li>Provide a gateway to services</li>
+                        <li>Access control and limiting</li>
+                        <li>Aggregation (including third party services)</li>
+                    </ol>
+                </section>
+                <section>
+                    <h3>Aggregation Tier Issues</h3>
+                    <ol>
+                        <li>Protocol translation can lead you to an ESB</li>
+                        <li>Its a proxy!</li>
+                    </ol>
+                </section>
+                </section>
+
+                <!-- Services Tier -->
+                <section>
+                <section>
+                    <h3>Services Tier</h3>
+                    <ol>
+                        <li>Existing on premises systems</li>
+                        <li>External third party services</li>
+                    </ol>
+                </section>
+                <section>
+                    <h3>Services Tier Features</h3>
+                    <ol>
+                        <li>Mircoservice architecture</li>
+                        <li>Or a deprecated monolith ...</li>
+                    </ol>
+                </section>
+                <section>
+                    <h3>Services Tier Drivers</h3>
+                    <ol>
+                        <li>Scale services not machines</li>
+                        <li>Decouple service delivery from the monolith</li>
+                        <li>Rewriting the monolith is required but difficult and costly</li>
+                        <li>Adding new features to the monolith is getting harder and harder due to layers of technical debt</li>
+                        <li>Useful services can be decoupled and delivered with reasonable budgets and timeframes</li>
+                    </ol>
+                </section>
+                </section>
+
+                <!-- Microservices and monoliths -->
+                <section>
+                <section>
+                    <h3>How do you move from a Monolithic to a Microservice architecture?</h3>
+                    <ol>
+                        <li>Do you need to move?</li>
+                        <li>Microservices _will_ add complexity, at what point do they become worth it?</li>
+                        <li>Greenfields vs. existing site.</li>
+                        <li>Build or $SERVICEaaS</li>
+                    </ol>
+                </section>
+                <section>
+                    <h3>How do you move from a Monolithic to a Microservice architecture?</h3>
+                    <ol>
+                        <li>New services become microservices</li>
+                        <li>Abstract existing services from the monolith over time</li>
+                    </ol>
+                </section>
+                <section>
+                    <h3>Rules of thumb</h3>
+                    <ol>
+                        <li>New services become microservices</li>
+                        <li>Abstract existing services from the monolith over time</li>
+                        <li>"Choose Boring Technology" for the Monolith</li>
+                    </ol>
+                </section>
+                <section>
+                    <h3>Containers != Microservices </h3>
+                    <ol>
+                        <li>Orthogonal</li>
+                        <li>Containers are a great way to build microservices</li>
+                        <li>Netflix defined the microservice pattern long before docker existed</li>
+                    </ol>
+                </section>
+                </section>
+
+                <!-- Data consistency in a distributed system -->
+                <section>
+                <section>
+                    <h3>How do achieve data consistency in a distributed system?</h3>
+                    <ol>
+                        <li>You don't</li>
+                        <li>You need to embrace eventual consistency</li>
+                        <li>Embrace redundancy</li>
+                    </ol>
+                </section>
+                <section class="image-slide">
+                    <h2>CAP Theorem</h2>
+                    <img src="../img/cap.png" alt="CAP Theorem">
+                </section>
+                <section>
+                    <h3>Ripples</h3>
+                    <ol>
+                        <li>Ripples (a propagating wave) moves from the source to the edges (clients)</li>
+                        <li>How can all services have the same view of the world?</li>
+                    </ol>
+                </section>
+                <section>
+                    <h3>Consistent keys not consistent data</h3>
+                    <ol>
+                        <li>Need to be able to refer to the same piece of data across services in a consistent manner</li>
+                        <li>Natural keys</li>
+                        <li>Source and all nodes expose the keys</li>
+                        <li>NoSQL (key/value stores) help</li>
+
+                    </ol>
+                </section>
+                <section>
+                    <h3>Data injection</h3>
+                    <ol>
+                        <li>New data added later on</li>
+                        <li>Don't couple it with a particular node</li>
+                    </ol>
+                </section>
+                <section>
+                    <h3>Split channels</h3>
+                    <ol>
+                        <li>Different types of data have different latency and "currency"</li>
+                        <li>Dedicated pipelines</li>
+                    </ol>
+                </section>
+                </section>
+
+                <!-- Section title slide with big colour dot -->
+                <section class="title-slide">
+                    <h2 class="orange">Title goes here</h2>
+                </section>
+
+                <!-- Slide with a large title -->
+                <section>
+                    <h2>Large title</h2>
+                    <aside class="notes">
+                        This will only display in the notes window.
+                    </aside>
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h3>Title</h3>
+                    <img src="img/800x400.gif" alt="">
+                </section>
+
+                <!-- Slide with list items (list items are displayed at once) -->
+                <section>
+                    <h3>List title</h3>
+                    <ul>
+                        <li>List item <img class="img-right" src="img/300x400.gif" alt="Placeholder image"></li>
+                        <li>List item</li>
+                        <li>List item</li>
+                    </ul>
+                </section>
+
+                <!-- Slide with list items (fragmented list items) -->
+                <section>
+                    <h3>Fragmented list</h3>
+                    <ul>
+                        <li class="fragment">List item</li>
+                        <li class="fragment">List item</li>
+                        <li class="fragment">List item <img class="img-centered" src="img/500x200.gif" alt="Placeholder image"></li>
+                    </ul>
+                </section>
+
+                <!-- Slide with vertical slides underneath  -->
+                <section>
+                    <!-- Horizontal slide (This is one the same level as slide above) -->
+                    <section class="title-slide banner-3">
+                        <h2 class="yellow">Title (press down to see vertical slides)</h2>
+                    </section>
+
+                    <!-- The following slides are vertical, use down arrow key to navigate -->
+                    <!-- Centered paragraph  -->
+                    <section>
+                        <h3>Paragraph</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at scelerisque eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam placerat posuere nibh vel dapibus.</p>
+                    </section>
+
+                    <!-- Blockquote  -->
+                    <section>
+                        <h3>Blockquote</h3>
+                        <blockquote class="quotation-marks">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at scelerisque eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam placerat posuere nibh vel dapibus.
+                        </blockquote>
+                    </section>
+
+                    <!-- Nested lists-->
+                    <section>
+                        <h3>Nested lists</h3>
+                            <ul>
+                                <li>One</li>
+                                <li>Two</li>
+                                <li>Three</li>
+                                    <ul>
+                                        <li>Nested One</li>
+                                        <li>Nested Two</li>
+                                    </ul>
+                            </ul>
+                    </section>
+                </section>
+
+                <!-- Slide with code block -->
+                <section>
+                    <h3>Title</h3>
+                    <p>Some text</p>
+                    <pre><code data-trim contenteditable>
+function linkify( selector ) {
+    if( supports3DTransforms ) {
+
+        var nodes = document.querySelectorAll( selector );
+
+        for( var i = 0, len = nodes.length; i < len; i++ ) {
+            var node = nodes[i];
+
+            if( !node.className ) {
+                node.className += ' roll';
+            }
+        }
+    }
+}
+                    </code></pre>
+                </section>
+
+                <!-- Slide with full background image -->
+                <section data-background="img/800x600.gif">
+                    <h3>Image backgrounds</h3>
+                </section>
+
+                <!-- Slide with Catalyst slogan -->
+                <section class="image-slide">
+                    <img class="cat-slogan-image" src="css/theme/images/freedom-to-innovate.svg" alt="freedom to innovate">
+                </section>
+            </div>
+
+            <div class="footer">
+                <div class="scarf">
+                    <div class="scarf-orange"></div>
+                    <div class="scarf-yellow"></div>
+                    <div class="scarf-blue"></div>
+                    <div class="scarf-green"></div>
+                </div>
+                <div class="footer-inner">
+                    <div class="catalyst-logo-footer">Catalyst</div>
+                    <!-- NOTE: use only one of these. open-source-technologists is the standard -->
+                    <div class="open-source-technologists">open source technologists</div>
+                    <!-- <div class="freedom-to-innovate">freedom to innovate</div> -->
+                </div>
+            </div>
+        </div>
+
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Parallax scrolling
+                // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+                // parallaxBackgroundSize: '2100px 900px',
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
