@@ -191,6 +191,57 @@ $ curl -s https://docs.ansible.com/ansible/list_of_cloud_modules.html  |pup 'div
                 </section>
 
                 <section>
+                    <h3>Output</h3>
+                    <ul>
+                        <li>Ansible - debug with huge json blobs</li>
+                        <li>Terraform - output variables</li>
+                        <li>Winner: Terraform</li>
+                    </ul>
+                </section>
+
+                <!-- Slide with code block -->
+                <section>
+                    <h3>Output</h3>
+                    <pre><code data-trim contenteditable>
+output "ip" {
+    value = "${aws_eip.ip.public_ip}"
+}
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Output</h3>
+                    <pre><code data-trim contenteditable>
+$ terraform apply
+...
+
+Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+  ip = 50.17.232.209
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Output</h3>
+                    <p><a href="https://github.com/ansible/ansible/issues/5564#issuecomment-237425798">https://github.com/ansible/ansible/issues/5564#issuecomment-237425798</a>
+                    <pre><code data-trim contenteditable>
+- name: Assign a floating IP
+      os_floating_ip:
+        server: "{{ item.instance_name }}"
+      register: floating_ip_info
+      with_items: "{{ instances }}"
+
+# annoyingly verbose output
+    - name: Output floating IPs
+      debug:
+        msg: "got floating ip {{ item.floating_ip.floating_ip_address }} for {{ item.item.instance_name }}"
+      with_items: "{{ floating_ip_info.results }}"
+                    </code></pre>
+                </section>
+
+                <section>
                     <h3>Secrets</h3>
                     <ul>
                         <li>Ansible - vault</li>
