@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Ansible vs. Terraform</title>
+
+        <meta name="author" content="Catalyst">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/catalyst.css" id="theme">
+
+        <!-- For syntax highlighting -->
+        <!-- <link rel="stylesheet" href="lib/css/zenburn.css"> -->
+        <link rel="stylesheet" href="lib/css/catalyst-syntax.css">
+
+        <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+        <script>
+            if( window.location.search.match( /print-pdf/gi ) ) {
+                var link = document.createElement( 'link' );
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+                document.getElementsByTagName( 'head' )[0].appendChild( link );
+            }
+        </script>
+
+        <style>
+            /* Add the ability to omit slides from the printed version (has to be after the print include)*/
+            @media print {
+                .reveal .slides section.no-print {
+                    display: none !important;
+                    visibility: hidden !important;
+                }
+            }
+        </style>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <!-- Please put any custom styles here -->
+        <style>
+
+        </style>
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <!-- Cover slide -->
+                <section>
+                    <h3>Ansible vs. Terraform</h3>
+                    <h4>An unscientific comparison</h4>
+                    <h1 class="catalyst-logo">Catalyst</h1>
+                    <p class="small-text">
+                        Presented by <a href="#">Donovan Jones</a>
+                    </p>
+                </section>
+
+                <section>
+                    <h3>Installation</h3>
+                    <ul>
+                        <li>Ansible - pip, source or ppa</li>
+                        <li>Terraform - wget and unzip</li>
+                        <li>Winner: Draw</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Confiuration</h3>
+                    <ul>
+                        <li>Ansible - YAML playbooks</li>
+                        <li>Terraform - HCL or json</li>
+                        <li>Winner: Draw</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Declarative</h3>
+                    <p>Both are declarative in the sense that you define desired state rather than the steps to achieve that state. Both are idempotent</p>
+                    <ul>
+                        <li>Ansible - Sequential plays/tasks with parallel execution of group instances at the play level (free vs linear strategy)</li>
+                        <li>Terraform - Dependency analysis and parallel execution built in</li>
+                        <li>Winner: Draw</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>State tracking</h3>
+                    <ul>
+                        <li>Ansible - write a delete playbook...</li>
+                        <li>Terraform - destroy</li>
+                        <li>Winner: Terrafrom</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Speed</h3>
+                    <ul>
+                        <li>Ansible - slower (python)</li>
+                        <li>Terraform - fast (go)</li>
+                        <li>Winner: Terrafrom</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Instance Configuration</h3>
+                    <ul>
+                        <li>Ansible - core functionality</li>
+                        <li>Terraform - provisioners (remote-exec, file, chef)</li>
+                        <li>Winner: Ansible</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Cloud support</h3>
+                    <ul>
+                        <li>Ansible - Cloud modules (localhost?!)</li>
+                        <li>Terraform - Providers</li>
+                        <li>Winner: ?</li>
+                    </ul>
+                </section>
+
+                <!-- Slide with code block -->
+                <section>
+                    <h3>Cloud support</h3>
+                    <pre><code data-trim contenteditable>
+$ curl -s https://www.terraform.io/docs/providers/index.html \
+| pup '[href^="/docs/providers"] text{}' \
+| grep -v Providers | head
+Atlas
+AWS
+Chef
+CenturyLinkCloud
+CloudFlare
+CloudStack
+Cobbler
+Consul
+Datadog
+DigitalOcean
+                    </code></pre>
+                </section>
+
+                <!-- Slide with code block -->
+                <section>
+                    <h3>Cloud support</h3>
+                    <pre><code data-trim contenteditable>
+$ curl -s https://docs.ansible.com/ansible/list_of_cloud_modules.html \
+| pup 'div.section h2 text{}'  |grep -v '¶' | head
+Amazon
+Azure
+Centurylink
+Cloudstack
+Digital Ocean
+Docker
+Google
+Linode
+Lxc
+Lxd
+                    </code></pre>
+                </section>
+
+                <!-- Slide with code block -->
+                <section>
+                    <h3>Cloud support</h3>
+                    <pre><code data-trim contenteditable>
+$ curl -s https://www.terraform.io/docs/providers/index.html  |pup '[href^="/docs/providers"] text{}' | grep -v Providers | wc -l
+42
+$ curl -s https://docs.ansible.com/ansible/list_of_cloud_modules.html  |pup 'div.section h2 text{}'  |grep -v '¶' | wc -l
+19
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Cloud support</h3>
+                    <ul>
+                        <li>Ansible - Cloud modules (localhost?!)</li>
+                        <li>Terraform - Providers</li>
+                        <li>Winner: Terraform</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Secrets</h3>
+                    <ul>
+                        <li>Ansible - vault</li>
+                        <li>Terraform - vault?</li>
+                        <li>Winner: Draw</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Whats Missing?</h3>
+                </section>
+            </div>
+
+            <div class="footer">
+                <div class="scarf">
+                    <div class="scarf-orange"></div>
+                    <div class="scarf-yellow"></div>
+                    <div class="scarf-blue"></div>
+                    <div class="scarf-green"></div>
+                </div>
+                <div class="footer-inner">
+                    <div class="catalyst-logo-footer">Catalyst</div>
+                    <!-- NOTE: use only one of these. open-source-technologists is the standard -->
+                    <div class="open-source-technologists">open source technologists</div>
+                    <!-- <div class="freedom-to-innovate">freedom to innovate</div> -->
+                </div>
+            </div>
+        </div>
+
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Parallax scrolling
+                // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+                // parallaxBackgroundSize: '2100px 900px',
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
