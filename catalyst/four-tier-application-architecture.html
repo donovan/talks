@@ -49,6 +49,11 @@
         <style>
 
         </style>
+        <style>
+            .reveal h1, .reveal h2, .reveal h3 {
+                color: #ba2025;
+            }
+        </style>
     </head>
 
     <body>
@@ -65,6 +70,15 @@
                     <p class="small-text">
                         Presented by <a href="#">Donovan Jones</a>
                     </p>
+                </section>
+
+                <!-- Slide with full background image -->
+                <section data-background="../img/shrimp-curry-on-plate.jpg">
+                    <h1>Kiwi Big</h1>
+                </section>
+
+                <!-- Slide with full background image -->
+                <section data-background="../img/nginx-blog.png">
                 </section>
 
                 <!-- What is the Four-Tier Application Architecture -->
@@ -91,7 +105,11 @@
                 </section>
                 <section>
                     <h3>What is the Four-Tier Application Architecture?</h3>
-                    <p>Is the Three-Tier Architecture still useful? A blog post from Ted Schadler at Forrester Research suggests a new architecture described as “The Four-Tier Engagement Platform”.</p>
+                    <p>Is the Three-Tier Architecture still useful?</p>
+                    <p>A blog post from Ted Schadler at Forrester Research suggests a new architecture described as “The Four-Tier Engagement Platform”.</p>
+                </section>
+                <section data-background="../img/Pink_decorated_wedding_cake_tiered.jpg">
+                    <h3>What is the Four-Tier Application Architecture?</h3>
                 </section>
                 <section>
                     <h3>What is the Four-Tier Application Architecture?</h3>
@@ -102,10 +120,15 @@
                         <li>Services Tier</li>
                     </ol>
                 </section>
+
                 <!-- Large image slide -->
                 <section class="image-slide">
                     <h2>The Four-Tier Application Architecture</h2>
                     <img src="../img/engagement_platform_2.png" alt="The Four-Tier Application Architecture">
+                </section>
+
+                <!-- Slide with full background image -->
+                <section data-background="../img/14421982237_9c6cdd3edc_b.jpg">
                 </section>
 
                 <!-- Client Tier -->
@@ -119,6 +142,17 @@
                     </ul>
                 </section>
                 <section>
+                    <h3>Client Tier Drivers</h3>
+                    <ul>
+                        <li>Regular refreshes</li>
+                        <li>New features</li>
+                        <li>Better UX</li>
+                        <li>Responsive (transition to mobile first)</li>
+                        <li>Resurface functionality for mobile</li>
+                        <li>Rework functionality for better UX</li>
+                    </ul>
+                </section>
+                <section>
                     <h3>Client Tier Features</h3>
                     <ul>
                         <li>Decoupled client and backend</li>
@@ -129,26 +163,48 @@
                     </ul>
                 </section>
                 <section>
-                    <h3>Client Tier Drivers</h3>
+                    <h3>Client Tier Technology</h3>
                     <ul>
-                        <li>Regular refreshes of frontend components</li>
-                        <li>TODO</li>
+                        <li>React</li>
+                        <li>Angular</li>
+                        <li>Ember</li>
+                        <li>Backbone</li>
+                        <li>JQuery</li>
                     </ul>
                 </section>
                 <section>
-                    <h3>Client Tier Issues</h3>
+                    <h3>Client Tier Challenges</h3>
                     <ul>
                         <li>Javascript stratigraphy</li>
                         <li>Javascript mediated SEO</li>
                     </ul>
                 </section>
 
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>Delivery Tier</h2>
+                    <img src="../img/engagement_platform_2.png" alt="The Four-Tier Application Architecture">
+                </section>
+
+                <section data-background="../img/Steam_Whistle_delivery_van_20110613-IMG_3586.JPG">
+                    <h2>Delivery Tier</h2>
+                </section>
                 <!-- Delivery Tier -->
                 <section>
                     <h3>Delivery Tier</h3>
                     <ul>
                         <li>Optimizes content for proper display on device</li>
                         <li>Caches content for performant delivery</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Delivery Tier Drivers</h3>
+                    <ul>
+                        <li>DDoS</li>
+                        <li>Better latency</li>
+                        <li>Performance globally</li>
+                        <li>Performance optimisation</li>
+                        <li>Outsource client facing infrastructure challenges</li>
                     </ul>
                 </section>
                 <section>
@@ -163,17 +219,7 @@
                     </ul>
                 </section>
                 <section>
-                    <h3>Delivery Tier Drivers</h3>
-                    <ul>
-                        <li>DDoS</li>
-                        <li>Better latency</li>
-                        <li>Performance globally</li>
-                        <li>Performance optimisation</li>
-                        <li>Outsource client facing infrastructure challenges</li>
-                    </ul>
-                </section>
-                <section>
-                    <h3>Delivery Tier Issues</h3>
+                    <h3>Delivery Tier Challenges</h3>
                     <ul>
                         <li>Its a proxy!</li>
                         <li>Its not under your control</li>
@@ -184,7 +230,33 @@
                         <li>Worse latency</li>
                     </ul>
                 </section>
+                <section>
+                    <h3>Delivery Tier Providers</h3>
+                    <ul>
+                        <li>CloudFlare</li>
+                        <li>Fastly</li>
+                        <li>Incapsula</li>
+                        <li>Cloudfront</li>
+                        <li>Akamai</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Delivery Tier Technology</h3>
+                    <ul>
+                        <li>Nginx</li>
+                        <li>Varnish</li>
+                    </ul>
+                </section>
 
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>Aggregation Tier</h2>
+                    <img src="../img/engagement_platform_2.png" alt="The Four-Tier Application Architecture">
+                </section>
+
+                <section data-background="../img/10mm-aggregate.jpg">
+                    <h2>Aggregation Tier</h2>
+                </section>
                 <!-- Aggregation Tier -->
                 <section>
                     <h3>Aggregation Tier</h3>
@@ -192,6 +264,14 @@
                         <li>Aggregates and federates services tier</li>
                         <li>Provides discovery for underlying services</li>
                         <li>Performs data protocol translation</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Aggregation Tier Drivers</h3>
+                    <ul>
+                        <li>Provide a gateway to services</li>
+                        <li>Access control and limiting</li>
+                        <li>Aggregation (including third party services)</li>
                     </ul>
                 </section>
                 <section>
@@ -206,19 +286,30 @@
                     </ul>
                 </section>
                 <section>
-                    <h3>Aggregation Tier Drivers</h3>
+                    <h3>Aggregation Tier Technology</h3>
                     <ul>
-                        <li>Provide a gateway to services</li>
-                        <li>Access control and limiting</li>
-                        <li>Aggregation (including third party services)</li>
+                        <li>Nginx</li>
+                        <li>traefik.io</li>
+                        <li>Kong</li>
+                        <li>Tengine</li>
+                        <li>HAProxy</li>
                     </ul>
                 </section>
                 <section>
-                    <h3>Aggregation Tier Issues</h3>
+                    <h3>Aggregation Tier Challenges</h3>
                     <ul>
                         <li>Protocol translation can lead you to an ESB</li>
-                        <li>Its a proxy!</li>
                     </ul>
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>Services Tier</h2>
+                    <img src="../img/engagement_platform_2.png" alt="The Four-Tier Application Architecture">
+                </section>
+
+                <!-- Slide with full background image -->
+                <section data-background="../img/3071723066_b8d9009562_b.jpg">
                 </section>
 
                 <!-- Services Tier -->
@@ -240,21 +331,32 @@
                     <h3>Services Tier Drivers</h3>
                     <ul>
                         <li>Scale services not machines</li>
+                        <li>Plug and Play XaaS</li>
                         <li>Decouple service delivery from the monolith</li>
                         <li>Rewriting the monolith is required but difficult and costly</li>
                         <li>Adding new features to the monolith is getting harder and harder due to layers of technical debt</li>
                         <li>Useful services can be decoupled and delivered with reasonable budgets and timeframes</li>
                     </ul>
                 </section>
+                <section>
+                    <h3>Services Tier Technology</h3>
+                    <p>Too many technologies to mention running on ...</p>
+                    <ul>
+                        <li>Cloud instances</li>
+                        <li>Docker</li>
+                        <li>Baremetal</li>
+                        <li>VMs</li>
+                    </ul>
+                </section>
 
                 <!-- Microservices and monoliths -->
                 <section>
-                    <h3>How do you move from a Monolithic to a Microservice architecture?</h3>
+                    <h3>When to go Microservice?</h3>
                     <ul>
                         <li>Do you need to move?</li>
                         <li>Microservices _will_ add complexity, at what point do they become worth it?</li>
                         <li>Greenfields vs. existing site.</li>
-                        <li>Build or $SERVICEaaS</li>
+                        <li>Build or plug in a third party service?</li>
                     </ul>
                 </section>
                 <section>
@@ -270,6 +372,16 @@
                         <li>New services become microservices</li>
                         <li>Abstract existing services from the monolith over time</li>
                         <li>"Choose Boring Technology" for the Monolith</li>
+                        <li>Aim to keep the complexity of the monolith static</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Microservice Challenges</h3>
+                    <ul>
+                        <li>Datastores, Eventual consistency etc.</li>
+                        <li>Patterns</li>
+                        <li>Service proliferation</li>
+                        <li>Language proliferation</li>
                     </ul>
                 </section>
                 <section>
@@ -280,51 +392,21 @@
                         <li>Netflix defined the microservice pattern long before docker existed</li>
                     </ul>
                 </section>
-
-                <!-- Data consistency in a distributed system -->
                 <section>
-                    <h3>How do achieve data consistency in a distributed system?</h3>
+                    <h3>Credits</h3>
                     <ul>
-                        <li>You don't</li>
-                        <li>You need to embrace eventual consistency</li>
-                        <li>Embrace redundancy</li>
+                        <li>Curry Image: <a href="http://www.public-domain-image.com/">http://www.public-domain-image.com/</a></li>
+                        <li>Nginx blog post: <a href="https://www.nginx.com/blog/time-to-move-to-a-four-tier-application-architecture/">It’s Time to Move to a Four-Tier Application Architecture</a></li>
+                        <li>Ted Schadlers blog post: <a href="http://blogs.forrester.com/ted_schadler/13-11-20-mobile_needs_a_four_tier_engagement_platform">Mobile Needs A Four-Tier Engagement Platform</a></li>
+                        <li>Overview of a three-tier application diagram: <a href="https://commons.wikimedia.org/wiki/File:Overview_of_a_three-tier_application_vectorVersion.svg">Wikimedia commons</a></li>
+                        <li>Tiered cake image: <a href="https://commons.wikimedia.org/wiki/File:Pink_decorated_wedding_cake_tiered.jpg">Wikimedia commons</a></li>
+                        <li>Clients: <a href="https://www.flickr.com/photos/publiclibrariesnsw/14421982237">publiclibrariesnsw flickr</a></li>
+                        <li>Delivery van image: <a href="https://commons.wikimedia.org/wiki/File:Steam_Whistle_delivery_van_20110613-IMG_3586.JPG">Wikimedia commons</a></li>
+                        <li>Aggregate image: <a href="https://commons.wikimedia.org/wiki/File:10mm-aggregate.jpg">Wikimedia commons</a></li>
+                        <li>No Services image: <a href="https://www.flickr.com/photos/brewbooks/3071723066">brewbooks flickr</a></li>
                     </ul>
                 </section>
-                <section class="image-slide">
-                    <h2>CAP Theorem</h2>
-                    <img src="../img/cap.png" alt="CAP Theorem">
-                </section>
-                <section>
-                    <h3>Ripples</h3>
-                    <ul>
-                        <li>Ripples (a propagating wave) moves from the source to the edges (clients)</li>
-                        <li>How can all services have the same view of the world?</li>
-                    </ul>
-                </section>
-                <section>
-                    <h3>Consistent keys not consistent data</h3>
-                    <ul>
-                        <li>Need to be able to refer to the same piece of data across services in a consistent manner</li>
-                        <li>Natural keys</li>
-                        <li>Source and all nodes expose the keys</li>
-                        <li>NoSQL (key/value stores) help</li>
-
-                    </ul>
-                </section>
-                <section>
-                    <h3>Data injection</h3>
-                    <ul>
-                        <li>New data added later on</li>
-                        <li>Don't couple it with a particular node</li>
-                    </ul>
-                </section>
-                <section>
-                    <h3>Split channels</h3>
-                    <ul>
-                        <li>Different types of data have different latency and "currency"</li>
-                        <li>Dedicated pipelines</li>
-                    </ul>
-                </section>
+            </div>
 
             <div class="footer">
                 <div class="scarf">
