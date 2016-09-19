@@ -66,42 +66,100 @@
                     </p>
                 </section>
 
-                <!-- Large image slide -->
-                <section class="image-slide">
-                    <h3>DeepMind</h3>
-                    <img src="../img/Hieronymus_Bosch_003.jpg" alt="">
-                </section>
-
                 <section>
-                    <h3>Topics</h3>
+                    <h3>History</h3>
                     <ul>
-                        <li>history</li>
-                        <li>definitions of the types (DNN ML etc.)</li>
-                        <li>the recent advances</li>
-                        <li>the open sourcing of frameworks by the big players</li>
-                        <li>the leading frameworks</li>
-                        <li>the mechanics of training</li>
-                        <li>the importance of GPUs</li>
-                        <li>GPUs in the cloud</li>
-                        <li>the services (apis)</li>
-                        <li>what this stuff can be used for (with real examples)</li>
-                        <ul>
-                            <li>Recognising</li>
-                            <li>Enhancing</li>
-                            <li>Producing</li>
-                            <li>Steering</li>
-                        </ul>
-                        <li>wot we have done</li>
-                        <li>wot we could do</li>
+                        <li>Machine Learning is a sub-set of artificial intelligence</li>
+                        <li>Machine Learning and Neural Netowkrs have been around for a long time</li>
                     </ul>
                 </section>
 
                 <section>
-                    <h3>Training</h3>
+                    <h3>Recent Advances</h3>
                     <ul>
-                        <li>Favours GPUs</li>
-                        <li>Needs a large corpus</li>
-                        <li>List item</li>
+                        <li>Enabled by increases in Computation</li>
+                        <li>Deep Learning</li>
+                        <li>Deep Neural Networks (DNN)</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Definitions and Types</h3>
+                    <ul>
+                        <li>Supervised, network learns correlation between labels and data</li>
+                        <li>Unsupervised, clustering to detect similarities (or anomalies)</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Open Source Frameworks</h3>
+                    <ul>
+                        <li>Many big players have open sourced frameworks</li>
+                        <li>Microsoft CNTK</li>
+                        <li>Google TensorFlow</li>
+                        <li>Baidu Paddle (and others)</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Leading Academic Frameworks</h3>
+                    <ul>
+                        <li>Caffe (BSD)</li>
+                        <li>Torch (BSD)</li>
+                        <li>Theano (BSD)</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>The Mechanics of Training (Supervised)</h3>
+                    <ul>
+                        <li>Needs a large classified corpus</li>
+                        <li>Generating a corpus is a time consuming manual process</li>
+                        <li>Training takes a long time</li>
+                        <li>Training is a lot quicker if you have powerful GPUs</li>
+                        <li>Powerful GPUs are expensive</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>GPUs</h3>
+                    <ul>
+                        <li>GPUs are essential for many deep learning tasks</li>
+                        <li>GPUs are currently not easy to virtualise (eg no support in OpenStack)</li>
+                        <li>GPU vendors (Nvidia and ATI) are repositioning themselves as Deep Learning Companies</li>
+                        <li>"NVIDIA GPUs - The Engine of Deep Learning"</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>NVIDIA digits DevBox</h3>
+                    <ul>
+                        <li>Four TITAN X GPUs with 12GB of memory per GPU</li>
+                        <li>Ubuntu 14.04</li>
+                        <li>US $15,000</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Services and APIs</h3>
+                    <ul>
+                        <li>IBM Watson</li>
+                        <li>Google Prediction</li>
+                        <li>Microsoft Azure Machine Learning</li>
+                        <li>Amazon Machine Learning</li>
+                        <li>AlchemyAPI (IBM)</li>
+                        <li>PredictionIO</li>
+                        <li>BigML</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Use Cases</h3>
+                    <ul>
+                        <li>Recognising</li>
+                        <li>Enhancing</li>
+                        <li>Producing</li>
+                        <li>Steering</li>
                     </ul>
                 </section>
 
@@ -110,6 +168,9 @@
                     <ul>
                         <li>Recognition, understanding, classification</li>
                         <li>Hearing, Seeing</li>
+                        <li>Identifying dogs or spam</li>
+                        <li>Recognising anomalies</li>
+                        <li>New computing interfaces (eg Amazon Alexa Voice)</li>
                     </ul>
                 </section>
 
@@ -117,15 +178,21 @@
                     <h3>Enhancing things</h3>
                     <ul>
                         <li>Sharpen images</li>
-                        <li>List item</li>
+                        <li>Noise removal/reduction</li>
                     </ul>
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h3>DeepMind</h3>
+                    <p>Donovan fed a Hieronymus Bosch picture to Deep Dream (running in a docker container on his laptop.</p>
+                    <img src="../img/Hieronymus_Bosch_003.jpg" alt="">
                 </section>
 
                 <section>
                     <h3>Producing things</h3>
                     <ul>
-                        <li>Sharpen images</li>
-                        <li>List item</li>
+                        <li>Generating new media (images, sound, video)</li>
                     </ul>
                 </section>
 
@@ -133,7 +200,149 @@
                     <h3>Steering things</h3>
                     <ul>
                         <li>Understanding of states</li>
-                        <li>Steering</li>
+                        <li>Declarative systems</li>
+                        <li>Self Driving Cars</li>
+                        <li>Optimisation of resource usage (power, fuel etc.)</li>
+                    </ul>
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h3>Use Cases</h3>
+                    <img src="http://deeplearning4j.org/img/use_case_industries.png" alt="">
+                </section>
+
+                <section>
+                    <h3>Examples</h3>
+                    <blockquote class="quotation-marks">
+                        Googles DeepMind wavenet algorithm can accurately mimic human voices
+                    </blockquote>
+                </section>
+
+                <section>
+                    <h3>Examples</h3>
+                    <blockquote class="quotation-marks">
+                        Google's AlphaGo AI beats Lee Sedol again to win Go series 4-1
+                    </blockquote>
+                </section>
+
+                <section>
+                    <h3>Examples</h3>
+                    <blockquote class="quotation-marks">
+                        An Algorithm May Soon Cover Your Local Sports Team
+                    </blockquote>
+                </section>
+
+                <section>
+                    <h3>Examples</h3>
+                    <blockquote class="quotation-marks">
+                        Hacker George Hotz Unveils $999 Self-Driving Add-On
+                    </blockquote>
+                </section>
+
+                <section>
+                    <h3>Examples</h3>
+                    <blockquote class="quotation-marks">
+                        IBM Watson Created The First-Ever AI-Made Movie Trailer For 'Morgan'
+                    </blockquote>
+                </section>
+
+                <section>
+                    <h3>Examples</h3>
+                    <blockquote class="quotation-marks">
+                        Google's DeepMind To Apply AI In Head and Neck Cancer Treatments
+                    </blockquote>
+                </section>
+
+                <section>
+                    <h3>Examples</h3>
+                    <blockquote class="quotation-marks">
+                        Yahoo's New Anti-Abuse AI Outperforms Previous AI
+                    </blockquote>
+                </section>
+
+                <section>
+                    <h3>Examples</h3>
+                    <blockquote class="quotation-marks">
+                        Google's DeepMind AI To Use 1 Million NHS Eye Scans To Spot Diseases Earlier
+                    </blockquote>
+                </section>
+
+                <section>
+                    <h3>Examples</h3>
+                    <blockquote class="quotation-marks">
+                        Facebook Messenger Now Has 11,000 Bots
+                    </blockquote>
+                </section>
+
+                <section>
+                    <h3>Examples</h3>
+                    <blockquote class="quotation-marks">
+                        AI Downs 'Top Gun' Pilot In Dogfights
+                    </blockquote>
+                </section>
+
+                <section>
+                    <h3>Examples</h3>
+                    <blockquote class="quotation-marks">
+                        Scientists Force Computer To Binge On TV Shows, learns to Predict What Humans Will Do
+                    </blockquote>
+                </section>
+
+                <section>
+                    <h3>Examples</h3>
+                    <blockquote class="quotation-marks">
+                        Movie Written By Algorithm Turns Out To Be Hilarious and Intense
+                    </blockquote>
+                </section>
+
+                <section>
+                    <h3>Examples</h3>
+                    <blockquote class="quotation-marks">
+                        Google's 'Project Magenta' Art Machine Composes Its First Song
+                    </blockquote>
+                </section>
+
+                <section>
+                    <h3>Examples</h3>
+                    <blockquote class="quotation-marks">
+                        Facebook Spares Humans By Fighting Offensive Photos With AI
+                    </blockquote>
+                </section>
+
+                <section>
+                    <h3>Examples</h3>
+                    <blockquote class="quotation-marks">
+                        DeepMind AI Reduces Google Data Centre Cooling Bill by 40%
+                    </blockquote>
+                </section>
+
+                <section>
+                    <h3>Sourcing Data</h3>
+                    <ul>
+                        <li>Data is valuable</li>
+                        <li>Where will you get data from?</li>
+                        <li>What sources of do you have access to?</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Opportunities</h3>
+                    <ul>
+                        <li>Identify data</li>
+                        <li>Providing ML skills to clients to help them use their data</li>
+                        <li>Partnering to get access to data</li>
+                        <li>Evaluating data that may be valuable</li>
+                        <li>Applying ML to running own systems better (eg Anomaly Detection in monitoring systems or data center power optimisation)</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Risks</h3>
+                    <ul>
+                        <li>Machine Learning allows decoupling of results from human effort</li>
+                        <li>If your competitors can use ML effectively they could accelerate rapidly</li>
+                        <li>First mover feedback loops could allow first to utilise to capture significant market share</li>
                     </ul>
                 </section>
 
