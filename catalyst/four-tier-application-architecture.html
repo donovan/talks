@@ -70,6 +70,9 @@
                     <p class="small-text">
                         Presented by <a href="#">Donovan Jones</a>
                     </p>
+                    <p>
+                        https://github.com/donovan/talks
+                    </p>
                 </section>
 
                 <!-- Slide with full background image -->
@@ -203,14 +206,15 @@
                         <li>DDoS</li>
                         <li>Better latency</li>
                         <li>Performance globally</li>
-                        <li>Performance optimisation</li>
-                        <li>Outsource client facing infrastructure challenges</li>
+                        <li>Performance optimisation?</li>
+                        <li>Outsource some client facing infrastructure challenges (eg HTTP2/SPDY support)</li>
                     </ul>
                 </section>
                 <section>
                     <h3>Delivery Tier Features</h3>
                     <ul>
                         <li>Fine grained cache control</li>
+                        <li>Optimisation features</li>
                         <li>Anycasting</li>
                         <li>Large number of global POPs</li>
                         <li>NZ POPs</li>
@@ -271,7 +275,7 @@
                     <ul>
                         <li>Provide a gateway to services</li>
                         <li>Access control and limiting</li>
-                        <li>Aggregation (including third party services)</li>
+                        <li>Service aggregation (including third party services)</li>
                     </ul>
                 </section>
                 <section>
@@ -293,6 +297,7 @@
                         <li>Kong</li>
                         <li>Tengine</li>
                         <li>HAProxy</li>
+                        <li>Service discovery</li>
                     </ul>
                 </section>
                 <section>
@@ -331,7 +336,7 @@
                     <h3>Services Tier Drivers</h3>
                     <ul>
                         <li>Scale services not machines</li>
-                        <li>Plug and Play XaaS</li>
+                        <li>Integrate useful third party services</li>
                         <li>Decouple service delivery from the monolith</li>
                         <li>Rewriting the monolith is required but difficult and costly</li>
                         <li>Adding new features to the monolith is getting harder and harder due to layers of technical debt</li>
@@ -359,9 +364,16 @@
                         <li>Build or plug in a third party service?</li>
                     </ul>
                 </section>
+
+                <section class="image-slide">
+                    <h2>Complexity</h2>
+                    <img src="../img/netflix-microservices.jpg" alt="Netflix Microservices">
+                </section>
+
                 <section>
                     <h3>How do you move from a Monolithic to a Microservice architecture?</h3>
                     <ul>
+                        <li>You will need a continuous delivery pipeline to accommodate _all_ the services you will build</li>
                         <li>New services become microservices</li>
                         <li>Abstract existing services from the monolith over time</li>
                     </ul>
@@ -369,19 +381,18 @@
                 <section>
                     <h3>Rules of thumb</h3>
                     <ul>
-                        <li>New services become microservices</li>
-                        <li>Abstract existing services from the monolith over time</li>
                         <li>"Choose Boring Technology" for the Monolith</li>
+                        <li>Make use of external services where possible</li>
                         <li>Aim to keep the complexity of the monolith static</li>
                     </ul>
                 </section>
                 <section>
                     <h3>Microservice Challenges</h3>
                     <ul>
-                        <li>Datastores, Eventual consistency etc.</li>
-                        <li>Patterns</li>
-                        <li>Service proliferation</li>
-                        <li>Language proliferation</li>
+                        <li>Can you build them with your one pizza team?</li>
+                        <li>Datastores (CAP, eventual consistency etc.)</li>
+                        <li>New Patterns (deal with back pressure etc.)</li>
+                        <li>Service and language proliferation</li>
                     </ul>
                 </section>
                 <section>
