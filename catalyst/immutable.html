@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Reveal Presentation Template - Catalyst</title>
+
+        <meta name="author" content="Catalyst">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/catalyst.css" id="theme">
+
+        <!-- For syntax highlighting -->
+        <!-- <link rel="stylesheet" href="lib/css/zenburn.css"> -->
+        <link rel="stylesheet" href="lib/css/catalyst-syntax.css">
+
+        <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+        <script>
+            if( window.location.search.match( /print-pdf/gi ) ) {
+                var link = document.createElement( 'link' );
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+                document.getElementsByTagName( 'head' )[0].appendChild( link );
+            }
+        </script>
+
+        <style>
+            /* Add the ability to omit slides from the printed version (has to be after the print include)*/
+            @media print {
+                .reveal .slides section.no-print {
+                    display: none !important;
+                    visibility: hidden !important;
+                }
+            }
+        </style>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <!-- Please put any custom styles here -->
+        <style>
+
+        </style>
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <!-- Cover slide -->
+                <section>
+                    <h3>Building Immutable Infrastructure on IaaS</h3>
+                    <h1 class="catalyst-logo">Catalyst</h1>
+                    <p class="small-text">
+                        Presented by <a href="#">Donovan Jones</a>
+                    </p>
+                </section>
+
+                <!-- Slide with full background image -->
+                <section data-background="img/rocks.jpg">
+                    <h3>Immutable</h3>
+                </section>
+
+                    <!-- Blockquote  -->
+                    <section>
+                        <h3>Immutable Infrastructure</h3>
+                        <blockquote class="quotation-marks">
+                        Immutable infrastructure is an approach to managing services and software deployments on IT resources wherein components are replaced rather than changed. An application or services is effectively redeployed each time any change occurs.
+                        </blockquote>
+                    </section>
+
+                <section>
+                    <h3>Immutable Infrastructure</h3>
+                    <ul>
+                        <li>Does not mean Read Only in this case</li>
+                        <li>Blue Green Deployments</li>
+                        <li>Cattle</li>
+                        <li>Rotate, Repave, and Repair</li>
+                    </ul>
+                </section>
+
+                <!-- Slide with full background image -->
+                <section data-background="img/blue_sky_green_grass-1920x1200.jpg">
+                    <h3>Blue Green</h3>
+                </section>
+
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <img src="img/blue_green_deployments.png" alt="">
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <img src="img/servers_pets_or_cattle.jpg" alt="">
+                </section>
+
+                    <!-- Blockquote  -->
+                    <section>
+                        <h3>Faster is safer</h3>
+                        <blockquote class="quotation-marks">
+                        Rotate datacenter credentials every few minutes or hours. Repave every server and application in the datacenter every few hours from a known good state. Repair vulnerable operating systems and application stacks consistently within hours of patch availability.
+                        </blockquote>
+                        <p>Justin Smith - Pivotal</p>
+                    </section>
+
+                <!-- Slide with full background image -->
+                <section data-background="img/tools.png">
+                    <h3>Tools</h3>
+                </section>
+
+                <section>
+                    <h3>Tools</h3>
+                    <ul>
+                        <li>Classic IaaS (AWS/Openstack)</li>
+                        <li>Colocated Microservices and single page javascript apps</li>
+                        <li>React/Angular2/Django/Node/Nginx/Postgres</li>
+                        <li>Some third party services (auth and payment)</li>
+                    </ul>
+                </section>
+
+                <!-- Slide with full background image -->
+                <section data-background="img/draugen_platform_oil_rig_4.jpg">
+                    <h3>Platform</h3>
+                </section>
+
+                <section>
+                    <h3>Platform</h3>
+                    <ul>
+                        <li>3 different projects deployed so far</li>
+                        <li>Managed via an ops repo</li>
+                        <li>Gitlab/Bash/Ansible/Python</li>
+                        <li>Boto3/Shade</li>
+                    </ul>
+                </section>
+
+                <!-- Slide with full background image -->
+                <section data-background="img/test.jpg">
+                    <h3>Testing</h3>
+                </section>
+
+                <section>
+                    <h3>Testing</h3>
+                    <ul>
+                        <li>Gitlab CI Pipelines</li>
+                        <li>Unit Tests</li>
+                        <li>Functional Tests (Selenium, overnight and on demand)</li>
+                        <li>Manual Testing (with self service environment builds)</li>
+                        <li>UAT Testing</li>
+                        <li>Infrastructure tests (full environment build per commit)</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Scheduler</h3>
+                    <ul>
+                        <li>Jez Humble says build your own tools</li>
+                        <li>Python boto/shade and gitlab triggers</li>
+                        <li>Approximately 2K Lines</li>
+                    </ul>
+                </section>
+
+                <!-- Slide with full background image -->
+                <section data-background="img/schedule.jpg">
+                    <h3>Scheduler</h3>
+                </section>
+
+                <section>
+                    <h3>Scheduler</h3>
+                    <ul>
+                        <li>What should exist?</li>
+                        <li>What does exist?</li>
+                        <li>Recognise the delta</li>
+                        <li>Alert</li>
+                        <li>Modify to achieve desired state</li>
+                        <li>Does not currently autoscale</li>
+                    </ul>
+                </section>
+
+                <!-- Slide with full background image -->
+                <section data-background="img/Professor-Chalk-Board-Life-Lessons.jpg">
+                    <h3>Lessons</h3>
+                </section>
+
+                <!-- Slide with list items (fragmented list items) -->
+                <section>
+                    <h3>Obvious</h3>
+                    <ul>
+                        <li class="fragment">Microservices and II do not require docker!</li>
+                        <li class="fragment">Docker is a good fit for building Microservices and II</li>
+                        <li class="fragment">Build times are slow(er) with VMs</li>
+                        <li class="fragment">Immutable is the default state for containers and not VMs</li>
+                        <li class="fragment">Keep dev/ci/staging/prod as similar as possible</li>
+                        <li class="fragment">B/G + DB requires thought (expand/contract)</li>
+                    </ul>
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <img src="img/blue_green_deployments.png" alt="">
+                </section>
+
+                <!-- Slide with list items (fragmented list items) -->
+                <section>
+                    <h3>Obvious</h3>
+                    <ul>
+                        <li class="fragment">You need to ship logs</li>
+                        <li class="fragment">Ensure only one canonical source of configuration</li>
+                        <li class="fragment">Its easy to ignore alerts (Andon cord)</li>
+                        <li class="fragment">Stuck with VMs as the unit of scaling</li>
+                        <li class="fragment">Managing releases is inevitable</li>
+                        <li class="fragment">Decreasing the attack surface of VMs is difficult</li>
+                    </ul>
+                </section>
+
+                <!-- Slide with list items (fragmented list items) -->
+                <section>
+                    <h3>Not So Obvious</h3>
+                    <ul>
+                        <li class="fragment">Invest as much time as possible in sprint0</li>
+                        <li class="fragment">Aim for a working unit test pipeline for your first commit</li>
+                        <li class="fragment">Build an ops code pipeline to test your infrastructure as code</li>
+                    </ul>
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h3>Sprint0</h3>
+                    <img src="img/Ops-ROI-jesserobbins-thumb-600x285.png" alt="">
+                    <p>Jesse Robbins - <a href="http://radar.oreilly.com/2007/10/operations-is-a-competitive-ad.html">Operations is a competitive advantage…</a></p>
+                </section>
+
+                <!-- Slide with list items (fragmented list items) -->
+                <section>
+                    <h3>Not So Obvious</h3>
+                    <ul>
+                        <li class="fragment">Think about versioned artifacts (AMI/deb/wheel etc.)</li>
+                        <li class="fragment">II decouples deployments from releases</li>
+                        <li class="fragment">Trunk based development needs commitment and buy in</li>
+                        <li class="fragment">One repo for all code?</li>
+                        <li class="fragment">Watch out for stray pets (the meta problem)</li>
+                        <li class="fragment">Be brave and automate everything</li>
+                    </ul>
+                </section>
+
+                <!-- Slide with full background image -->
+                <section data-background="img/Artefact_Grotta_di_Fumane_Funde_1.jpg">
+                </section>
+
+
+                <section>
+                    <h3>Gitlab CI</h3>
+                    <ul>
+                        <li>Drop a .gitlab-ci.yml file in your projects root</li>
+                        <li>CI file defines some stages</li>
+                        <li>CI file defines before/after scripts</li>
+                        <li>Install a gitlab runner somewhere</li>
+                        <li>Gitlab will invoke runners to run the stages</li>
+                        <li>Each stage is a job in the pipeline</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Gitlab CI</h3>
+                    <ul>
+                        <li>Designed for build / test / deploy</li>
+                        <li>Triggered by a commit</li>
+                        <li>All stages will run</li>
+                        <li>Some control possible using git branches and except / only</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Gitlab</h3>
+                    <ul>
+                        <li>Knows my secrets</li>
+                        <li>Can invoke automation</li>
+                        <li>This make me want to use it for other stuff</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>What sort of other stuff?</h3>
+                    <ul>
+                        <li>Triggers</li>
+                        <li>Use a token and a project endpoint</li>
+                        <li>Can trigger builds using a web request rather than a commit</li>
+                        <li>Built a dashboard to allow on demand building</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Problems</h3>
+                    <ul>
+                        <li>Only one file per project</li>
+                        <li>Clunky control over what runs</li>
+                        <li>Env var communications</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>What else could we do?</h3>
+                    <ul>
+                        <li>Cron</li>
+                        <li>Curl with vars</li>
+                        <li>Hits trigger url (with token)</li>
+                        <li>On stub project</li>
+                        <li>Invokes "Router" script in runner</li>
+                        <li>Router validates and the calls various other scripts</li>
+                        <li>Other scripts were put in place via python</li>
+                    </ul>
+                </section>
+
+                <!-- Slide with code block -->
+                <section>
+                    <h3>Stub project</h3>
+                    <pre><code data-trim contenteditable>
+cron:
+  script:
+    - /home/gitlab-runner/audit-scripts/cron-router.sh
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Why even do this?</h3>
+                    <ul>
+                        <li>Security supposedly</li>
+                        <li>Vault keys already exist in gitlab</li>
+                        <li>You don't need to put your vault keys on the box</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>What do these things do?</h3>
+                    <ul>
+                        <li>A number of related projects running in AWS and Catalyst Cloud</li>
+                        <li>Manifest describes desired state of environments (dev/staging/prod)</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>What do these things do?</h3>
+                    <ul>
+                        <li>Infrastructure as code</li>
+                        <li>+</li>
+                        <li>Test driven development</li>
+                        <li>=</li>
+                        <li>Test driven infrastructure as code</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Scripts</h3>
+                    <ul>
+                        <li>Python3/boto3/openstack</li>
+                        <li>Alerts about state mismatches</li>
+                        <li>Update dashboard with state and mismatches (dynamodb)</li>
+                        <li>Manifest describes a schedule for termination and instantiation</li>
+                    </ul>
+                </section>
+
+
+                <section>
+                    <h3>Total waste of time</h3>
+                    <ul>
+                        <li>VMs not containers</li>
+                        <li>Should replace the whole lot with Kubernetes</li>
+                        <li>Giving me a lot more free time to debug Kubernetes network issues</li>
+                    </ul>
+                </section>
+
+
+                <!-- Section title slide with big colour dot -->
+                <section class="title-slide">
+                    <h2 class="orange">Title goes here</h2>
+                </section>
+
+                <!-- Slide with a large title -->
+                <section>
+                    <h2>Large title</h2>
+                    <aside class="notes">
+                        This will only display in the notes window.
+                    </aside>
+                </section>
+
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h3>Title</h3>
+                    <img src="img/800x400.gif" alt="">
+                </section>
+
+                <!-- Slide with list items (list items are displayed at once) -->
+                <section>
+                    <h3>List title</h3>
+                    <ul>
+                        <li>List item <img class="img-right" src="img/300x400.gif" alt="Placeholder image"></li>
+                        <li>List item</li>
+                        <li>List item</li>
+                    </ul>
+                </section>
+
+                <!-- Slide with list items (fragmented list items) -->
+                <section>
+                    <h3>Fragmented list</h3>
+                    <ul>
+                        <li class="fragment">List item</li>
+                        <li class="fragment">List item</li>
+                        <li class="fragment">List item <img class="img-centered" src="img/500x200.gif" alt="Placeholder image"></li>
+                    </ul>
+                </section>
+
+                <!-- Slide with vertical slides underneath  -->
+                <section>
+                    <!-- Horizontal slide (This is one the same level as slide above) -->
+                    <section class="title-slide banner-3">
+                        <h2 class="yellow">Title (press down to see vertical slides)</h2>
+                    </section>
+
+                    <!-- The following slides are vertical, use down arrow key to navigate -->
+                    <!-- Centered paragraph  -->
+                    <section>
+                        <h3>Paragraph</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at scelerisque eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam placerat posuere nibh vel dapibus.</p>
+                    </section>
+
+                    <!-- Nested lists-->
+                    <section>
+                        <h3>Nested lists</h3>
+                            <ul>
+                                <li>One</li>
+                                <li>Two</li>
+                                <li>Three</li>
+                                    <ul>
+                                        <li>Nested One</li>
+                                        <li>Nested Two</li>
+                                    </ul>
+                            </ul>
+                    </section>
+                </section>
+
+                <!-- Slide with code block -->
+                <section>
+                    <h3>Stub project</h3>
+                    <pre><code data-trim contenteditable>
+cron:
+  script:
+    - /home/gitlab-runner/audit-scripts/cron-router.sh
+                    </code></pre>
+                </section>
+
+                <!-- Slide with full background image -->
+                <section data-background="img/800x600.gif">
+                    <h3>Image backgrounds</h3>
+                </section>
+
+                <!-- Slide with Catalyst slogan -->
+                <section class="image-slide">
+                    <img class="cat-slogan-image" src="css/theme/images/freedom-to-innovate.svg" alt="freedom to innovate">
+                </section>
+            </div>
+
+            <div class="footer">
+                <div class="scarf">
+                    <div class="scarf-orange"></div>
+                    <div class="scarf-yellow"></div>
+                    <div class="scarf-blue"></div>
+                    <div class="scarf-green"></div>
+                </div>
+                <div class="footer-inner">
+                    <div class="catalyst-logo-footer">Catalyst</div>
+                    <!-- NOTE: use only one of these. open-source-technologists is the standard -->
+                    <div class="open-source-technologists">open source technologists</div>
+                    <!-- <div class="freedom-to-innovate">freedom to innovate</div> -->
+                </div>
+            </div>
+        </div>
+
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Parallax scrolling
+                // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+                // parallaxBackgroundSize: '2100px 900px',
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
